@@ -9,9 +9,7 @@ const NavBar: React.FC = () => {
         <div className="flex w-1/3 justify-around max-md:justify-between">
           <InstagramIcon stroke="#555555" height={15} />
           <FacebookIcon stroke="#555555" height={15} />
-          <div className="h-6 w-6 cursor-pointer">
-            <ShoppingCart stroke="#555555" height={15} />
-          </div>
+          <ShoppingCart stroke="#555555" height={15} />
         </div>
       </div>
     </nav>

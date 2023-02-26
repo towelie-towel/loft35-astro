@@ -1,0 +1,24 @@
+<template>
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-white">
+    <div
+      class="spinner rounded-full animate-spin border-t-4 border-b-4 border-gray-400 h-12 w-12"
+    >
+    </div>
+  </div>
+</template>
+
+<style>
+  .spinner {
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

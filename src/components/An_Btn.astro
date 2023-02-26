@@ -1,0 +1,55 @@
+<div class="relative overflow-hidden">
+  <div class="flex items-center justify-center">
+    <div
+      id="anim-box"
+      class="bg-white p-4 rounded-lg shadow-lg transform scale-0 transition-transform"
+    >
+    </div>
+  </div>
+  <div class="flex items-center justify-center w-screen">
+    <button
+      class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md"
+      id="action-btn"
+      style={{ zIndex: 100 }}
+    >
+      Open Modal
+    </button>
+  </div>
+</div>
+
+<script>
+  const toggleModal = () => {
+    const modal = document.getElementById('anim-box');
+
+    if (modal?.classList.contains('scale-0')) {
+      modal?.classList.remove('scale-0');
+      modal?.classList.add('scale-100');
+    } else {
+      modal?.classList.remove('scale-100');
+      modal?.classList.add('scale-0');
+    }
+  };
+  const btnRef = document.querySelector('#action-btn');
+  btnRef?.addEventListener('click', () => {
+    toggleModal();
+  });
+</script>
+
+<style>
+  .modal {
+    z-index: 10;
+  }
+
+  .modal .bg-white {
+    width: 400px;
+    height: 300px;
+  }
+
+  .modal.scale-0 {
+    transform: scale(0);
+  }
+
+  .modal.scale-100 {
+    transform: scale(1);
+  }
+</style>
