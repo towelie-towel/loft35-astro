@@ -3,7 +3,6 @@ import { MagnifyingGlass } from './Icons';
 
 const FindProducts = () => {
   const [searchValue, setSearchValue] = useState('');
-  //const [isInputOpen, toggleInput] = useState(false);
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
