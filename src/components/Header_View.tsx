@@ -3,11 +3,8 @@ import data from '../utils/data';
 
 const HeaderView = () => {
   return (
-    <div className="m-auto flex flex-col items-center justify-center">
-      <div className="w-[95%] rounded-t-lg bg-[var(--secondary-bg-color)] pt-8 shadow-lg transition-all">
-        <CardSlider images={data.slider} />
-        <div className="h-5"></div>
-      </div>
+    <div className="w-[95%] m-auto rounded-t-lg bg-[var(--secondary-bg-color)] shadow-lg transition-all">
+      <CardSlider images={data.slider} />
     </div>
   );
 };

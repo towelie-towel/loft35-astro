@@ -258,7 +258,12 @@ export const ShoppingBag: React.FC<IProps> = ({ width, height, stroke }) => {
   );
 };
 
-export const StarIcon: React.FC<IProps> = ({ width, height, stroke }) => {
+export const StarIcon: React.FC<IProps & { onClick?: () => void }> = ({
+  width,
+  height,
+  stroke,
+  onClick,
+}) => {
   return (
     <svg
       fill="none"
@@ -267,6 +272,7 @@ export const StarIcon: React.FC<IProps> = ({ width, height, stroke }) => {
       width={width || height || 40}
       height={height || width || 40}
       stroke={stroke || 'currentColor'}
+      onClick={onClick}
     >
       <path
         strokeLinecap="round"
