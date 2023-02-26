@@ -3,20 +3,16 @@ type CardProps = {
   name: string;
 };
 
-export const Card: React.FC<CardProps & Record<string, unknown>> = ({
-  src,
-  name,
-  ...restProps
-}) => {
+export const Card: React.FC<CardProps> = ({ src, name }) => {
   return (
-    <div
-      {...restProps}
-      className="flex w-full flex-col items-center justify-center"
-    >
-      <div className="relative w-[90%] pb-[30%] rounded-md shadow-lg">
+    <div className="flex-shrink-0 w-full">
+      <div className="relative w-[90%] pb-[30%] shadow-md my-3 mx-auto rounded-md">
         <img
           src={src}
           alt={name}
+          sizes="(max-width: 425px) 50vw,
+          (max-width: 768px) 75vw,
+          (max-width: 1024px) 100vw"
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
         />
