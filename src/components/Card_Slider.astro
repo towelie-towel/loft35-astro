@@ -1,0 +1,21 @@
+---
+import Card from './Card.astro';
+
+interface Images {
+  name: string;
+  src: string;
+}
+export interface Props {
+  images: Images[];
+}
+
+const { images } = Astro.props;
+---
+
+<div
+  class="w-[95%] m-auto rounded-t-lg bg-[var(--secondary-bg-color)] shadow-lg transition-all"
+>
+  <div class="relative flex w-full">
+    {images.map((image, index) => <Card src={image.src} name={image.name} />)}
+  </div>
+</div>
