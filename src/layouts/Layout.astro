@@ -2,13 +2,13 @@
 export interface Props {
   title: string;
 }
-import ProductsSroll from '@/containers/Product_Scroll';
+
+import ProductsSroll from '@/containers/Product_Scroll.astro';
 import '../styles/globals.css';
 import data from '@/utils/data';
 import Header from '@/containers/Header';
 import Footer from '@/containers/Footer';
-import Card from '@/components/Card.astro';
-import CardSlider from '@/components/Card_Slider.astro';
+import CardSlider from '@/containers/Card_Slider.astro';
 
 const { title } = Astro.props;
 ---
