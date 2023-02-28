@@ -85,14 +85,6 @@
   overflow: auto;
 }
 
-img {
-  max-inline-size: 100%;
-  block-size: auto;
-  object-fit: cover;
-  object-position: top center;
-  position: relative;
-}
-
 html,
 body {
   scroll-behavior: smooth;
@@ -111,8 +103,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-.product-card {
-  border-radius: 0.475rem;
-  border: 1px solid #dfe3e6;
 }
