@@ -13,7 +13,5 @@ import vercel from '@astrojs/vercel/edge';
 export default defineConfig({
   integrations: [react(), tailwind()],
   output: 'server',
-  adapter: vercel({
-    analytics: true,
-  }),
+  adapter: vercel(),
 });
