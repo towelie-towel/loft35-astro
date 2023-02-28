@@ -1,0 +1,27 @@
+---
+import type { IProduct } from '../utils/data';
+import ProductDescription from './Product_Description';
+import { Picture } from '@astrojs/image/components';
+
+export interface IProps {
+  product: IProduct;
+}
+
+const { product } = Astro.props;
+---
+
+<div class={`w-[50%] pb-4`}>
+  <div class="product-card m-auto w-[92%] shadow-md">
+    <div class="relative w-full pb-[100%] overflow-hidden rounded-t-lg">
+      <Picture
+        src={product.image.src}
+        formats={['webp', 'avif', 'jpeg']}
+        widths={[200, 400, 800]}
+        aspectRatio="1:1"
+        sizes="(max-width: 800px) 100vw, 800px"
+        alt={product.image.name}
+      />
+    </div>
+    <ProductDescription product={product} />
+  </div>
+</div>
