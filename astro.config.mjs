@@ -16,5 +16,7 @@ import image from '@astrojs/image';
 export default defineConfig({
   integrations: [react(), tailwind(), image()],
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    analytics: true,
+  }),
 });
