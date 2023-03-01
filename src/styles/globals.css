@@ -42,7 +42,7 @@
   color: var(--font-primary-color);
   background-color: var(--primary-bg-color);
 
-  max-width: 1024px;
+  max-width: 768px;
   margin: 0 auto;
 
   transition-property: all;

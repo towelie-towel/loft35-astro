@@ -11,12 +11,13 @@ const { product } = Astro.props;
 ---
 
 <div class={`w-[50%] pb-4`}>
-  <div class="product-card m-auto w-[92%] shadow-md">
+  <div class="product-card m-auto w-[80%] shadow-md">
     <div class="relative w-full overflow-hidden rounded-t-lg">
       <Picture
         src={product.image.src}
         alt={product.image.name}
         formats={['webp', 'avif', 'jpeg']}
+        loading={'lazy'}
         widths={[200, 400, 800]}
         aspectRatio="1:1"
         sizes="(max-width: 800px) 75vw, 800px"
