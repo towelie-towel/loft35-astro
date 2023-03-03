@@ -19,7 +19,7 @@ const { categoryProducts, categoryGroup } = Astro.props;
   >
     {categoryGroup.join(' & ')}
   </h1>
-  <div class="m-auto flex w-full flex-wrap">
+  <div class="m-auto flex w-full justify-center flex-wrap">
     {
       categoryProducts.map((categoryProduct) => (
         <ProductItem product={categoryProduct} />
