@@ -44,10 +44,6 @@
 
   max-width: 768px;
   margin: 0 auto;
-
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 }
 
 [data-color-scheme='dark'] {
@@ -75,10 +71,6 @@
 }
 
 * {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-
   box-sizing: border-box;
   padding: 0;
   margin: 0;
