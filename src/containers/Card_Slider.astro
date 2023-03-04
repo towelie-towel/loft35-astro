@@ -14,12 +14,27 @@ const { images } = Astro.props;
 <div
   class="w-[95%] flex flex-col m-auto rounded-t-lg bg-[var(--secondary-bg-color)] shadow-lg"
 >
-  <div class="relative flex w-full">
+  <div id="h-scroll" class="relative flex w-full">
     {images.map((image, index) => <Card src={image.src} name={image.name} />)}
   </div>
   <button
+    id="h-scroll-btn"
     class="max-w-[80%] opacity-[var(--dark-reduced-opacitity-1)] my-5 mx-auto rounded-md bg-[var(--light-gray-1)] p-2 text-[0.8rem] font-medium text-[var(--font-secondary-color)] shadow-md"
   >
     Click aquí para stalkear nuestro Instagram ;)
   </button>
 </div>
+<script>
+  const cardSliderScroll = document.getElementById(
+    'h-scroll'
+  ) as HTMLDivElement;
+  const cardSliderBtn = document.getElementById(
+    'h-scroll-btn'
+  ) as HTMLButtonElement;
+
+  cardSliderBtn.addEventListener('click', scrollRight);
+
+  function scrollRight() {
+    cardSliderScroll.scrollLeft += cardSliderScroll.clientWidth;
+  }
+</script>
