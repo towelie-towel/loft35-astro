@@ -6,7 +6,7 @@ async function main() {
   const newAdmin: Admin = await prisma.admin.create({
     data: {
       id: 12345678,
-      firstName: 'Annet',
+      firstName: 'Julio',
       lastName: 'undefined',
       email: 'undefined',
       LoPassword: '12345678',
