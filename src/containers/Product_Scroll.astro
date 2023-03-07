@@ -5,19 +5,9 @@ import ProductCategories from '../components/Product_Categories';
 
 export interface Props {
   products: IProduct[];
+  categories: string[][];
 }
-const { products } = Astro.props;
-
-const categories = [
-  ['Pants'],
-  ['T-Shirts'],
-  ['Sweaters', 'Coats'],
-  ['Shirts'],
-  ['Blouses'],
-  ['Bags'],
-  ['Lencerie'],
-  ['Others'],
-];
+const { products, categories } = Astro.props;
 ---
 
 <div class="m-auto w-[95%] rounded-b-lg bg-[var(--secondary-bg-color)]">
@@ -36,4 +26,3 @@ const categories = [
     })
   }
 </div>
-<script></script>

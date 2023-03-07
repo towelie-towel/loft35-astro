@@ -25,6 +25,16 @@ export interface IStoreImage {
 }
 
 const data = {
+  categories: [
+    ['Pants'],
+    ['T-Shirts'],
+    ['Sweaters', 'Coats'],
+    ['Shirts'],
+    ['Blouses'],
+    ['Bags'],
+    ['Lencerie'],
+    ['Others'],
+  ],
   products: [
     {
       name: 'Red Shirt',
