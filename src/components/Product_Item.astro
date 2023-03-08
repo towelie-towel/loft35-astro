@@ -3,7 +3,7 @@ import type { IProduct } from '../utils/data';
 import ProductDescription from './Product_Description';
 import { Picture } from '@astrojs/image/components';
 
-export interface IProps {
+export interface Props {
   product: IProduct;
 }
 const { product } = Astro.props;
@@ -11,7 +11,11 @@ const { product } = Astro.props;
 
 <div class={`w-[47%] pb-4`}>
   <div class="product-card m-auto w-[95%] shadow-md">
-    <div class="relative w-full overflow-hidden rounded-t-lg">
+    <div
+      id="product-item"
+      data-value={product.slug}
+      class="relative w-full overflow-hidden rounded-t-lg"
+    >
       <Picture
         src={product.image.src}
         alt={product.image.name}
