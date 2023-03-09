@@ -41,16 +41,8 @@ const ProductScroll: React.FC<IProps> = ({ products, categories }) => {
           />
         );
       })}
-      <div
-        className={`fixed inset-0 z-10 h-full w-full bg-gray-900 bg-opacity-75 ${
-          productDetail ? 'scale-100' : 'scale-0'
-        } transform transition-transform`}
-      >
-        <ProductDetail
-          product={productDetail}
-          closeProductDetail={closeModal}
-        />
-      </div>
+
+      <ProductDetail product={productDetail} closeProductDetail={closeModal} />
     </div>
   );
 };
