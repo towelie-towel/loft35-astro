@@ -48,8 +48,8 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
             )}
 
             <div className="absolute bottom-[-10px] right-1/2 flex flex-wrap">
-              <img
-                className="w-[50px] h-[50px] rounded-md"
+              <div
+                className="relative w-[50px] h-[50px] rounded-md"
                 style={{
                   border:
                     !displayedImg || displayedImg === product.image.src
@@ -59,13 +59,16 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
                 onClick={() => {
                   setDisplayedImg(product.image.src);
                 }}
-                src={product.image.src}
-                alt={product.image.name}
-              />
+              >
+                <ProductLoader
+                  src={product.image.src}
+                  alt={product.image.name}
+                />
+              </div>
               {product.secondaryImages.map((image) => {
                 return (
-                  <img
-                    className="w-[50px] h-[50px] rounded-md"
+                  <div
+                    className="relative w-[50px] h-[50px] rounded-md"
                     onClick={() => {
                       setDisplayedImg(image.src);
                     }}
@@ -75,9 +78,9 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
                           ? 'black solid 1px'
                           : 'white solid 1px',
                     }}
-                    src={image.src}
-                    alt={image.name}
-                  />
+                  >
+                    <ProductLoader src={image.src} alt={image.name} />
+                  </div>
                 );
               })}
             </div>
