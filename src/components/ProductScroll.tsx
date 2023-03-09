@@ -10,7 +10,9 @@ export interface IProps {
 }
 
 const ProductScroll: React.FC<IProps> = ({ products, categories }) => {
-  const [productDetail, setProductDetail] = useState<null | IProduct>(null);
+  const [productDetail, setProductDetail] = useState<
+    null | undefined | IProduct
+  >();
 
   function openModal(product: IProduct) {
     setProductDetail(product);
