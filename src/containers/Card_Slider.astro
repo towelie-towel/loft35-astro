@@ -1,4 +1,5 @@
 ---
+import { NextSlider, PrevSlider } from '@/components/Icons';
 import Card from '../components/Card.astro';
 
 interface Images {
@@ -14,11 +15,18 @@ const { images } = Astro.props;
 <div
   class="w-[95%] flex flex-col m-auto rounded-t-lg bg-[var(--secondary-bg-color)] shadow-lg"
 >
-  <div id="h-scroll" class="relative flex w-full">
-    {images.map((image, index) => <Card src={image.src} name={image.name} />)}
+  <div class="relative overflow-hidden">
+    <button class="absolute -left-2 bottom-[40%] z-10" id="prev-card-btn">
+      <PrevSlider stroke="#a1a5b7" />
+    </button>
+    <button class="absolute -right-2 bottom-[40%] z-10" id="next-card-btn">
+      <NextSlider stroke="#a1a5b7" />
+    </button>
+    <div id="h-scroll" class="relative flex w-full overflow-x-hidden">
+      {images.map((image) => <Card src={image.src} name={image.name} />)}
+    </div>
   </div>
   <button
-    id="h-scroll-btn"
     class="max-w-[80%] opacity-[var(--dark-reduced-opacitity-1)] my-5 mx-auto rounded-md bg-[var(--light-gray-1)] p-2 text-[0.8rem] font-medium text-[var(--font-secondary-color)] shadow-md"
   >
     Click aquí para stalkear nuestro Instagram ;)
@@ -28,13 +36,67 @@ const { images } = Astro.props;
   const cardSliderScroll = document.getElementById(
     'h-scroll'
   ) as HTMLDivElement;
-  const cardSliderBtn = document.getElementById(
-    'h-scroll-btn'
+
+  const nextCardSliderBtn = document.getElementById(
+    'next-card-btn'
+  ) as HTMLButtonElement;
+  const prevCardSliderBtn = document.getElementById(
+    'prev-card-btn'
   ) as HTMLButtonElement;
 
-  cardSliderBtn.addEventListener('click', scrollRight);
+  const cardsCount = cardSliderScroll.childElementCount - 1;
+  let currentCard = 0;
 
-  function scrollRight() {
-    cardSliderScroll.scrollLeft += cardSliderScroll.clientWidth;
+  nextCardSliderBtn.addEventListener('click', scrollToNextCard);
+  prevCardSliderBtn.addEventListener('click', scrollToPrevCard);
+
+  let timeOutSet = false;
+
+  setInterval(() => {
+    if (!timeOutSet) {
+      currentCard++;
+      if (currentCard > cardsCount) {
+        currentCard = 0;
+      }
+      cardSliderScroll.scrollTo({
+        left: cardSliderScroll.offsetWidth * currentCard,
+        behavior: 'smooth',
+      });
+    }
+  }, 10000);
+
+  function scrollToNextCard() {
+    if (!timeOutSet) {
+      setTimeout(() => {
+        timeOutSet = false;
+      }, 8000);
+      timeOutSet = true;
+    }
+
+    currentCard++;
+    if (currentCard > cardsCount) {
+      currentCard = 0;
+    }
+    cardSliderScroll.scrollTo({
+      left: cardSliderScroll.offsetWidth * currentCard,
+      behavior: 'smooth',
+    });
+  }
+  function scrollToPrevCard() {
+    if (!timeOutSet) {
+      setTimeout(() => {
+        timeOutSet = false;
+      }, 8000);
+      timeOutSet = true;
+    }
+
+    currentCard--;
+    if (currentCard < 0) {
+      currentCard = cardsCount;
+    }
+    cardSliderScroll.scrollTo({
+      left: cardSliderScroll.offsetWidth * currentCard,
+      behavior: 'smooth',
+    });
   }
 </script>
