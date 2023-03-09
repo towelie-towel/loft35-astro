@@ -1,17 +1,13 @@
 import type { IProduct } from '../utils/data';
 import ProductDescription from './Product_Description';
+import ProductLoader from './Product_Loader';
 
 interface IProps {
   product: IProduct;
   onProductClick: (product: IProduct) => void;
-  productDetailRef: React.RefObject<HTMLDivElement>;
 }
 
-const ProductItem: React.FC<IProps> = ({
-  product,
-  onProductClick,
-  productDetailRef,
-}) => {
+const ProductItem: React.FC<IProps> = ({ product, onProductClick }) => {
   return (
     <div className={`w-[47%] pb-4`}>
       <div className="product-card m-auto w-[95%] shadow-md">
@@ -22,12 +18,7 @@ const ProductItem: React.FC<IProps> = ({
             onProductClick(product);
           }}
         >
-          <img
-            src={product.image.src}
-            alt={product.image.name}
-            loading="lazy"
-            sizes="(max-width: 800px) 75vw, 800px"
-          />
+          <ProductLoader src={product.image.src} alt={product.image.name} />
         </div>
         <ProductDescription product={product} />
       </div>

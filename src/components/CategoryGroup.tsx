@@ -5,14 +5,12 @@ interface IProps {
   categoryProducts: IProduct[];
   categoryGroup: string[];
   onProductClick: (product: IProduct) => void;
-  productDetailRef: React.RefObject<HTMLDivElement>;
 }
 
 const CategoryGroup: React.FC<IProps> = ({
   categoryProducts,
   categoryGroup,
   onProductClick,
-  productDetailRef,
 }) => {
   return (
     <div className="w-full">
@@ -23,7 +21,6 @@ const CategoryGroup: React.FC<IProps> = ({
       <div className="m-auto flex w-full justify-center flex-wrap">
         {categoryProducts.map((product) => (
           <ProductItem
-            productDetailRef={productDetailRef}
             onProductClick={onProductClick}
             key={product.slug}
             product={product}

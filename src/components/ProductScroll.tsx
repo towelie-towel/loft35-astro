@@ -1,7 +1,7 @@
 import { IProduct } from '@/utils/data';
 import CategoryGroup from '@/components/CategoryGroup';
 import ProductCategories from '@/components/Product_Categories';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import ProductDetail from './Product_Detail';
 
 export interface IProps {
@@ -11,31 +11,18 @@ export interface IProps {
 
 const ProductScroll: React.FC<IProps> = ({ products, categories }) => {
   const [productDetail, setProductDetail] = useState<null | IProduct>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
 
   function openModal(product: IProduct) {
     setProductDetail(product);
 
     const htmlElement = document.querySelector('html') as HTMLHtmlElement;
     htmlElement.style.overflow = 'hidden';
-
-    const modal = modalRef.current;
-    modal?.classList.add('scale-100');
-    modal?.classList.remove('scale-0');
-
-    console.log('openModal-debbug', modal);
   }
 
   function closeModal() {
     setProductDetail(null);
     const htmlElement = document.querySelector('html') as HTMLHtmlElement;
     htmlElement.style.overflow = 'auto';
-
-    const modal = modalRef.current;
-    modal?.classList.add('scale-0');
-    modal?.classList.remove('scale-100');
-
-    console.log('closeModal-debbug', modal);
   }
 
   return (
@@ -48,7 +35,6 @@ const ProductScroll: React.FC<IProps> = ({ products, categories }) => {
         return (
           <CategoryGroup
             key={index}
-            productDetailRef={modalRef}
             onProductClick={openModal}
             categoryProducts={categoryProducts}
             categoryGroup={category}
@@ -56,10 +42,9 @@ const ProductScroll: React.FC<IProps> = ({ products, categories }) => {
         );
       })}
       <div
-        className={
-          'fixed inset-0 z-10 h-full w-full bg-gray-900 bg-opacity-75 scale-0 transform transition-transform'
-        }
-        ref={modalRef}
+        className={`fixed inset-0 z-10 h-full w-full bg-gray-900 bg-opacity-75 ${
+          productDetail ? 'scale-100' : 'scale-0'
+        } transform transition-transform`}
       >
         <ProductDetail
           product={productDetail}
