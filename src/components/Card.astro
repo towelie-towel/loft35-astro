@@ -1,5 +1,6 @@
 ---
-import { Picture } from '@astrojs/image/components';
+//import { Picture } from '@astrojs/image/components';
+import CardLoader from './Card_Loader';
 
 export interface Props {
   name: string;
@@ -11,14 +12,15 @@ const { src, name } = Astro.props;
 
 <div class="flex-shrink-0 w-full">
   <div class="relative w-[90%] shadow-md my-3 mx-auto rounded-md">
-    <Picture
+    <CardLoader src={src} alt={name} client:load />
+    <!-- <Picture
       src={src}
       formats={['webp', 'avif', 'jpeg']}
       widths={[200, 400, 800]}
       aspectRatio="9:3"
       sizes="(max-width: 800px) 100vw, 800px"
       alt={name}
-    />
+    /> -->
   </div>
 </div>
 <style></style>
