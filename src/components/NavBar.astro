@@ -30,8 +30,6 @@ const {} = Astro.props;
   toggleThemeBtn.addEventListener('click', toggleTheme);
 
   function toggleTheme() {
-    console.log('toggleTheme');
-
     const htmlElement = document.querySelector('html') as HTMLHtmlElement;
     if (htmlElement.getAttribute('data-color-scheme') === 'dark') {
       htmlElement.setAttribute('data-color-scheme', 'light');

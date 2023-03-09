@@ -13,7 +13,6 @@ const CardLoader: React.FC<IProps> = ({ alt, src }) => {
     image.src = src;
     image.onload = () => {
       setIsLoading(false);
-      console.log('onLoad-Loader');
     };
   }, [src]);
 
@@ -26,7 +25,7 @@ const CardLoader: React.FC<IProps> = ({ alt, src }) => {
       {isLoading ? (
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse"></div>
       ) : (
-        <img src={src} alt={alt} />
+        <img loading="lazy" src={src} alt={alt} />
       )}
     </div>
   );
