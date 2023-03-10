@@ -1,5 +1,7 @@
+import { Category } from '@prisma/client';
+
 interface IProps {
-  categories: string[][];
+  categories: Category[];
 }
 
 const ProductCategories: React.FC<IProps> = ({ categories }) => {
@@ -15,9 +17,9 @@ const ProductCategories: React.FC<IProps> = ({ categories }) => {
           return (
             <button
               className="opacity-[var(--dark-reduced-opacitity-1)] active:bg-[var(--light-gray) mr-2 inline-block overflow-hidden rounded-md bg-[var(--transparent-gray-1)] py-1 px-[2%] text-start font-semibold text-[var(--font-secondary-color)] hover:bg-[var(--light-gray)]"
-              key={category.join()}
+              key={category.id}
             >
-              {category.join(' & ')}
+              {category.name}
             </button>
           );
         })}

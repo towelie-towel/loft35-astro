@@ -1,8 +1,8 @@
-import type { IProduct } from '../utils/data';
+import { Product } from '@prisma/client';
 import { AddToCartIcon } from './Icons';
 
 interface IProps {
-  product: IProduct;
+  product: Product;
 }
 
 const ProductDescription: React.FC<IProps> = ({ product }) => {
@@ -11,7 +11,10 @@ const ProductDescription: React.FC<IProps> = ({ product }) => {
       <h2 className="text-md opacity-[var(--dark-reduced-opacitity-1)]">
         {product.name}
       </h2>
-      <h3 className=" opacity-[var(--dark-reduced-opacitity-1)] text-md my-4">
+      <h3
+        translate="no"
+        className=" opacity-[var(--dark-reduced-opacitity-1)] text-md my-4"
+      >
         CUP$ {product.price}
       </h3>
       <button
