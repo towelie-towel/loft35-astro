@@ -31,7 +31,7 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="absolute flex justify-center flex-col items-center w-[90%] h-[90%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--secondary-bg-color)] rounded-lg shadow-lg"
+          className="absolute flex justify-center flex-col items-center w-[90%] h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--secondary-bg-color)] rounded-lg shadow-lg"
         >
           <button
             onClick={(e) => {
