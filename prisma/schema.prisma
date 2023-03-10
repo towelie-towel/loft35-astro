@@ -13,6 +13,8 @@ datasource db {
 }
 
 // Definición del modelo de productos
+
+
 model Product {
   id          Int      @id @default(autoincrement())
   name        String
@@ -28,7 +30,7 @@ model Product {
 // Definición del modelo de categorías
 model Category {
   id       Int       @id @default(autoincrement())
-  name     String    @unique
+  name     String
   products Product[]
 }
 

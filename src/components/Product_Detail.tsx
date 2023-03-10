@@ -1,18 +1,18 @@
+import type { IProduct } from '../utils/data';
 import React, { useEffect, useState } from 'react';
 import ProductDescription from './Product_Description';
 import ProductLoader from './Product_Loader';
-import { Product } from '@prisma/client';
 
 interface IProps {
-  product?: Product | null;
+  product?: IProduct | null;
   closeProductDetail: () => void;
 }
 
 const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
-  const [displayedImg, setDisplayedImg] = useState<string | null | undefined>();
+  const [displayedImg, setDisplayedImg] = useState<string | undefined>();
 
   useEffect(() => {
-    setDisplayedImg(product?.image);
+    setDisplayedImg(product?.image.src);
   }, [product]);
 
   return (
@@ -44,7 +44,7 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
           </button>
           <div className="relative p-5 overflow-visible">
             {displayedImg && (
-              <ProductLoader src={displayedImg} alt={product.id.toString()} />
+              <ProductLoader src={displayedImg} alt={product.image.name} />
             )}
 
             <div className="absolute bottom-[-10px] right-1/2 flex flex-wrap">
@@ -52,39 +52,38 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
                 className="relative w-[50px] h-[50px] rounded-md"
                 style={{
                   border:
-                    !displayedImg || displayedImg === product.image
+                    !displayedImg || displayedImg === product.image.src
                       ? 'black solid 1px'
                       : 'white solid 1px',
                 }}
                 onClick={() => {
-                  setDisplayedImg(product.image);
+                  setDisplayedImg(product.image.src);
                 }}
               >
                 <ProductLoader
-                  src={product.image || '/placeholder.png'}
-                  alt={product.id.toString()}
+                  src={product.image.src}
+                  alt={product.image.name}
                 />
               </div>
-              {/* Displaying secondary images (first need to add them to db)
-                product.secondaryImages.map((image) => {
-                  return (
-                    <div
-                      key={image.name}
-                      className="relative w-[50px] h-[50px] rounded-md"
-                      onClick={() => {
-                        setDisplayedImg(image.src);
-                      }}
-                      style={{
-                        border:
-                          displayedImg === image.src
-                            ? 'black solid 1px'
-                            : 'white solid 1px',
-                      }}
-                    >
-                      <ProductLoader src={image.src} alt={image.name} />
-                    </div>
-                  );
-                }) */}
+              {product.secondaryImages.map((image) => {
+                return (
+                  <div
+                    key={image.name}
+                    className="relative w-[50px] h-[50px] rounded-md"
+                    onClick={() => {
+                      setDisplayedImg(image.src);
+                    }}
+                    style={{
+                      border:
+                        displayedImg === image.src
+                          ? 'black solid 1px'
+                          : 'white solid 1px',
+                    }}
+                  >
+                    <ProductLoader src={image.src} alt={image.name} />
+                  </div>
+                );
+              })}
             </div>
           </div>
 

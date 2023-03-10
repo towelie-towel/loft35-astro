@@ -1,10 +1,10 @@
-import { Product } from '@prisma/client';
+import type { IProduct } from '../utils/data';
 import ProductDescription from './Product_Description';
 import ProductLoader from './Product_Loader';
 
 interface IProps {
-  product: Product;
-  onProductClick: (product: Product) => void;
+  product: IProduct;
+  onProductClick: (product: IProduct) => void;
 }
 
 const ProductItem: React.FC<IProps> = ({ product, onProductClick }) => {
@@ -18,10 +18,7 @@ const ProductItem: React.FC<IProps> = ({ product, onProductClick }) => {
             onProductClick(product);
           }}
         >
-          <ProductLoader
-            src={product.image || '/placeholder.png'}
-            alt={product.name}
-          />
+          <ProductLoader src={product.image.src} alt={product.image.name} />
         </div>
         <ProductDescription product={product} />
       </div>

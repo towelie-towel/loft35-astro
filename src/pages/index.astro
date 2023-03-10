@@ -8,40 +8,13 @@ import '@/styles/global.css';
 export interface Props {
   title: string;
 }
-
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient(); // Crea un cliente de Prisma
-
-let products = await prisma.product.findMany(); // Obtén todos los productos
-let categories = await prisma.category.findMany(); // Obtén todas las categorías
-const slider = [
-  {
-    name: 'whataform_tojo_clau',
-    src: 'https://loft35-aws-bucket.s3.us-east-2.amazonaws.com/whataform_tojo_clau.jpg',
-  },
-  {
-    name: 'whataform_tojo_clau',
-    src: 'https://loft35-aws-bucket.s3.us-east-2.amazonaws.com/whataform_tojo_clau.jpg',
-  },
-  {
-    name: 'whataform_tojo_clau',
-    src: 'https://loft35-aws-bucket.s3.us-east-2.amazonaws.com/whataform_tojo_clau.jpg',
-  },
-  {
-    name: 'whataform_tojo_clau',
-    src: 'https://loft35-aws-bucket.s3.us-east-2.amazonaws.com/whataform_tojo_clau.jpg',
-  },
-];
-
-products = products.map((product) => {
-  product.image =
-    'https://loft35-aws-bucket.s3.us-east-2.amazonaws.com/mockupbee.jpg';
-  return product;
-});
 ---
 
 <Layout title="Home">
-  <CardSlider images={slider} />
-  <ProductsSroll client:load products={products} categories={categories} />
+  <CardSlider images={data.slider} />
+  <ProductsSroll
+    client:load
+    products={data.products}
+    categories={data.categories}
+  />
 </Layout>
