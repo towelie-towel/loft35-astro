@@ -22,7 +22,10 @@ const { images } = Astro.props;
     <button class="absolute -right-2 bottom-[40%] z-10" id="next-card-btn">
       <NextSlider stroke="#a1a5b7" />
     </button>
-    <div id="h-scroll" class="relative flex w-full overflow-x-hidden">
+    <div
+      id="h-scroll"
+      class="relative flex w-full overflow-x-hidden duration-300"
+    >
       {images.map((image) => <Card src={image.src} name={image.name} />)}
     </div>
   </div>

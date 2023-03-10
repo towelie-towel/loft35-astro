@@ -68,6 +68,7 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
               {product.secondaryImages.map((image) => {
                 return (
                   <div
+                    key={image.name}
                     className="relative w-[50px] h-[50px] rounded-md"
                     onClick={() => {
                       setDisplayedImg(image.src);
