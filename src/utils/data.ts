@@ -42,7 +42,7 @@ const data = {
       category: 'Shirts',
       image: {
         name: 'bianca',
-        src: '/images/products/bianca.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [],
       price: '1500',
@@ -60,7 +60,7 @@ const data = {
       category: 'Blouses',
       image: {
         name: 'bianca_1',
-        src: '/images/products/bianca_1.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [],
       price: '1500',
@@ -78,12 +78,12 @@ const data = {
       category: 'T-Shirts',
       image: {
         name: 'mart',
-        src: '/images/products/mart.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [
         {
           name: 'mart_1',
-          src: '/images/products/mart_1.jpg',
+          src: '/placeholder.png',
         },
       ],
       price: '1500',
@@ -101,12 +101,12 @@ const data = {
       category: 'T-Shirts',
       image: {
         name: 'mart-production',
-        src: '/images/products/mart-production.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [
         {
           name: 'mart-production_1',
-          src: '/images/products/mart-production_1.jpg',
+          src: '/placeholder.png',
         },
       ],
       price: '1500',
@@ -123,7 +123,7 @@ const data = {
       category: 'T-Shirts',
       image: {
         name: 'mockupbee',
-        src: '/images/products/mockupbee.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [],
       price: '1500',
@@ -140,7 +140,7 @@ const data = {
       category: 'Pants',
       image: {
         name: 'cotton-studio',
-        src: '/images/products/cotton-studio.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [],
       price: '1500',
@@ -157,7 +157,7 @@ const data = {
       category: 'Sweaters',
       image: {
         name: 'dom-j',
-        src: '/images/products/dom-j.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [],
       price: '1500',
@@ -174,12 +174,12 @@ const data = {
       category: 'Coats',
       image: {
         name: 'evg-kowalievska',
-        src: '/images/products/evg-kowalievska.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [
         {
           name: 'evg-kowalievska_1',
-          src: '/images/products/evg-kowalievska_1.jpg',
+          src: '/placeholder.png',
         },
       ],
       price: '1500',
@@ -196,7 +196,7 @@ const data = {
       category: 'Bags',
       image: {
         name: 'fatin-hisham',
-        src: '/images/products/fatin-hisham.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [],
       price: '1500',
@@ -213,7 +213,7 @@ const data = {
       category: 'Pants',
       image: {
         name: 'pixabay',
-        src: '/images/products/pixabay.jpg',
+        src: '/placeholder.png',
       },
       secondaryImages: [],
       price: '1500',
@@ -228,19 +228,19 @@ const data = {
   slider: [
     {
       name: 'whataform_cartera',
-      src: '/images/slider/whataform_cartera.jpg',
+      src: '/placeholder.png',
     },
     {
       name: 'whataform_pink',
-      src: '/images/slider/whataform_pink.jpg',
+      src: '/placeholder.png',
     },
     {
       name: 'whataform_tojo_clau',
-      src: '/images/slider/whataform_tojo_clau.jpg',
+      src: '/placeholder.png',
     },
     {
       name: 'whataform_very_perry',
-      src: '/images/slider/whataform_very_perry.jpg',
+      src: '/placeholder.png',
     },
   ],
 };
