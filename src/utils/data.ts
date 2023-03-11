@@ -42,9 +42,22 @@ const data = {
       category: 'Shirts',
       image: {
         name: 'bianca',
-        src: '/placeholder.png',
+        src: '/products/shirts/blue/shirt-clothes-1.png',
       },
-      secondaryImages: [],
+      secondaryImages: [
+        {
+          name: 'bianca',
+          src: '/products/shirts/blue/shirt-clothes-2.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/blue/shirt-clothes-3.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/blue/shirt-clothes-4.png',
+        },
+      ],
       price: '1500',
       brand: undefined,
       rating: 4.5,
@@ -60,9 +73,18 @@ const data = {
       category: 'Blouses',
       image: {
         name: 'bianca_1',
-        src: '/placeholder.png',
+        src: '/products/shirts/celeste/shirt-clothes-1.png',
       },
-      secondaryImages: [],
+      secondaryImages: [
+        {
+          name: 'bianca',
+          src: '//products/shirts/celeste/shirt-clothes-2.png',
+        },
+        {
+          name: 'bianca',
+          src: '//products/shirts/celeste/shirt-clothes-3.png',
+        },
+      ],
       price: '1500',
       brand: undefined,
       rating: 3.2,
@@ -78,12 +100,24 @@ const data = {
       category: 'T-Shirts',
       image: {
         name: 'mart',
-        src: '/placeholder.png',
+        src: '/products/shirts/green/shirt-clothes-1.png',
       },
       secondaryImages: [
         {
           name: 'mart_1',
-          src: '/placeholder.png',
+          src: '/products/shirts/green/shirt-clothes-2.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/green/shirt-clothes-3.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/green/shirt-clothes-4.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/green/shirt-clothes-5.png',
         },
       ],
       price: '1500',
@@ -101,12 +135,12 @@ const data = {
       category: 'T-Shirts',
       image: {
         name: 'mart-production',
-        src: '/placeholder.png',
+        src: '/products/shirts/pink/shirt-clothes-1.png',
       },
       secondaryImages: [
         {
           name: 'mart-production_1',
-          src: '/placeholder.png',
+          src: '/products/shirts/pink/shirt-clothes-2.png',
         },
       ],
       price: '1500',
@@ -123,9 +157,27 @@ const data = {
       category: 'T-Shirts',
       image: {
         name: 'mockupbee',
-        src: '/placeholder.png',
+        src: '/products/shirts/red/shirt-clothes-1.png',
       },
-      secondaryImages: [],
+      secondaryImages: [
+        {
+          name: 'bianca',
+          src: '/products/shirts/red/shirt-clothes-2.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/red/shirt-clothes-3.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/red/shirt-clothes-4.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/red/shirt-clothes-5.png',
+        },
+      ],
+
       price: '1500',
       brand: undefined,
       rating: 3.5,
@@ -140,9 +192,22 @@ const data = {
       category: 'Pants',
       image: {
         name: 'cotton-studio',
-        src: '/placeholder.png',
+        src: '/products/shirts/yellow/shirt-clothes-1.png',
       },
-      secondaryImages: [],
+      secondaryImages: [
+        {
+          name: 'bianca',
+          src: '/products/shirts/yellow/shirt-clothes-2.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/yellow/shirt-clothes-3.png',
+        },
+        {
+          name: 'bianca',
+          src: '/products/shirts/yellow/shirt-clothes-4.png',
+        },
+      ],
       price: '1500',
       brand: undefined,
       rating: 2.4,
@@ -159,7 +224,16 @@ const data = {
         name: 'dom-j',
         src: '/placeholder.png',
       },
-      secondaryImages: [],
+      secondaryImages: [
+        {
+          name: 'bianca',
+          src: '/placeholder.png',
+        },
+        {
+          name: 'bianca',
+          src: '/placeholder.png',
+        },
+      ],
       price: '1500',
       brand: undefined,
       rating: 2.4,
@@ -228,19 +302,19 @@ const data = {
   slider: [
     {
       name: 'whataform_cartera',
-      src: '/placeholder.png',
+      src: '/slider/whataform_cartera.jpg',
     },
     {
       name: 'whataform_pink',
-      src: '/placeholder.png',
+      src: '/slider/whataform_pink.jpg',
     },
     {
       name: 'whataform_tojo_clau',
-      src: '/placeholder.png',
+      src: '/slider/whataform_tojo_clau.jpg',
     },
     {
       name: 'whataform_very_perry',
-      src: '/placeholder.png',
+      src: '/slider/whataform_very_perry.jpg',
     },
   ],
 };
