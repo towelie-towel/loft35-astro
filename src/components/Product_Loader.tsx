@@ -17,13 +17,13 @@ const ProductLoader: React.FC<IProps> = ({ alt, src }) => {
   }, [src]);
 
   return (
-    <div
-      className={`relative ${
-        isLoading && 'pb-[100%]'
-      } flex w-full justify-center items-center`}
-    >
+    <div className={`relative  flex w-full justify-center items-center`}>
       {isLoading ? (
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse"></div>
+        <div
+          className={` ${
+            isLoading && 'pb-[100%]'
+          } w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse`}
+        ></div>
       ) : (
         <img loading="lazy" src={src} alt={alt} />
       )}
