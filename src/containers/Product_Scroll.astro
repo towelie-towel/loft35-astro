@@ -1,0 +1,313 @@
+---
+import type { IProduct } from '@/utils/data';
+
+export interface Props {
+  products: IProduct[];
+  categories: string[][];
+}
+
+const { products, categories } = Astro.props;
+---
+
+<div class="m-auto w-[95%] rounded-b-lg bg-[var(--secondary-bg-color)]">
+  <!-- ProductCategories  -->
+  <div class="flex w-full flex-col pb-8">
+    <div class="mx-auto w-[90%] py-4">
+      <h2
+        class="text-left text-[1rem] font-semibold opacity-[var(--dark-reduced-opacitity-1)]"
+      >
+        Productos disponibles
+      </h2>
+    </div>
+    <div
+      class="mx-auto w-[90%] items-center overflow-x-scroll whitespace-nowrap px-0 pb-3"
+    >
+      {
+        categories.map((category) => {
+          return (
+            <button class="opacity-[var(--dark-reduced-opacitity-1)] active:bg-[var(--light-gray) mr-2 inline-block overflow-hidden rounded-md bg-[var(--transparent-gray-1)] py-1 px-[2%] text-start font-semibold text-[var(--font-secondary-color)] hover:bg-[var(--light-gray)]">
+              {category.join(' & ')}
+            </button>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <!-- CategoryGroup map -->
+
+  {
+    categories.map((category) => {
+      const categoryProducts = products.filter((product) =>
+        category.includes(product.category)
+      );
+      return (
+        /* CategoryGroup */ <div class="w-full">
+          <div class="opacity-[var(--dark-reduced-opacitity-1)] my-3 mx-auto w-[85%] border-b-[2px] border-solid border-[#dfe3e6]" />
+          <h1 class="opacity-[var(--dark-reduced-opacitity-1)] m-auto mb-3 w-[90%] text-start font-semibold text-[var(--font-terceary-color)]">
+            {category.join(' & ')}
+          </h1>
+          <div class="m-auto flex w-full justify-center flex-wrap">
+            {categoryProducts.map((product) => (
+              /* ProductItem */ <div class="w-[47%] pb-4">
+                <div class="product-card m-auto w-[95%] shadow-md">
+                  <div class="relative w-full overflow-hidden rounded-t-lg">
+                    {/* ProductLoader */}
+                    <div
+                      class="product-image-container relative flex w-full justify-center items-center"
+                      data-value={
+                        product.image.src +
+                        '&' +
+                        product.image.name +
+                        ' ' +
+                        product.secondaryImages
+                          .map((image) => image.src + '&' + image.name)
+                          .join(' ')
+                      }
+                    >
+                      <div class="pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse" />
+                    </div>
+                    {/* ProductDescription */}
+                    <div class="text-2x flex flex-col items-start justify-center p-5 font-semibold text-[var(--font-primary-color)]">
+                      <h2 class="text-md opacity-[var(--dark-reduced-opacitity-1)]">
+                        {product.name}
+                      </h2>
+                      <h3 class=" opacity-[var(--dark-reduced-opacitity-1)] text-md my-4">
+                        CUP$ {product.price}
+                      </h3>
+                      <button
+                        class="text-md flex w-full justify-center rounded bg-[var(--light-gray-2)] py-1 px-4 text-[var(--font-secondary-color)] shadow outline-none  hover:bg-[var(--light-gray)] active:bg-[var(--light-gray-1)]"
+                        type="button"
+                      >
+                        <svg
+                          width={18}
+                          height={18}
+                          viewBox="0 0 24 24"
+                          stroke-width="1"
+                          stroke={'currentColor'}
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                          <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                          <path d="M17 17h-11v-14h-2" />
+                          <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13" />
+                          <path d="M15 6h6m-3 -3v6" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    })
+  }
+  <!-- Modal ProductDetail -->
+  <div
+    class="modal-container onclick-close-modal fixed inset-0 z-10 h-full w-full bg-[#bdbcbc7e] scale-0 transform transition-transform"
+  >
+    <div
+      class="onclick-stop-propagation absolute flex justify-center flex-col items-center w-[90%] h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--secondary-bg-color)] rounded-lg shadow-lg"
+    >
+      <button class="absolute z-50 top-0 right-0 onclick-close-modal">
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          width={40}
+          height={40}
+          stroke={'currentColor'}
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <div class="relative p-5 overflow-visible">
+        {/* ProductLoader */}
+        <div
+          class="modal-main-image-container relative flex w-full justify-center items-center"
+        >
+          <div
+            class="pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse"
+          >
+          </div>
+        </div>
+
+        <div
+          class="modal-secondary-images-absolute-container absolute flex-row w-auto bottom-[-10px] right-1/3 flex flex-wrap"
+        >
+          <!-- <div
+            class="modal-secondary-image-container relative rounded-md w-[50px] h-[50px] flex justify-center items-center"
+          >
+            <div
+              class="pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse"
+            >
+            </div>
+          </div> -->
+          <!-- Modal Product Secondary Images goes here (this shoud be a map) -->
+        </div>
+      </div>
+
+      <div class="w-[80%] h-auto overflow-hidden">
+        <div
+          class="text-2x flex flex-col items-start justify-center p-5 font-semibold text-[var(--font-primary-color)]"
+        >
+          <h2 class="text-md opacity-[var(--dark-reduced-opacitity-1)]">
+            {''}
+          </h2>
+          <h3 class="opacity-[var(--dark-reduced-opacitity-1)] text-md my-4">
+            CUP$ {''}
+          </h3>
+          <button
+            class="text-md flex w-full justify-center rounded bg-[var(--light-gray-2)] py-1 px-4 text-[var(--font-secondary-color)] shadow outline-none hover:bg-[var(--light-gray)] active:bg-[var(--light-gray-1)]"
+            type="button"
+          >
+            <svg
+              width={18}
+              height={18}
+              viewBox="0 0 24 24"
+              stroke-width="1"
+              stroke={'currentColor'}
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M17 17h-11v-14h-2"></path>
+              <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+              <path d="M15 6h6m-3 -3v6"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  /*   ProductScroll Images containers (div) */
+  const productImageContainers = document.querySelectorAll(
+    '.product-image-container'
+  );
+  // adding event listener only to product items to open modal
+  productImageContainers.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      openModal(item.getAttribute('data-value') || '');
+      productModal.classList.remove('scale-0');
+    });
+  });
+  productImageContainers.forEach((imgContainer) => {
+    const image = new Image();
+    // Getting the data-value from the product image container
+    let imgContainerData = imgContainer.getAttribute('data-value');
+    // if there is not data-value, dont display anything
+    if (!imgContainerData) return;
+    // Each image data are separated by a space: " "
+    let imagesData = imgContainerData.split(' ');
+    // First URL is the main image
+    // URL is separated from alt by "&"
+    image.src = imagesData[0].split('&')[0];
+    image.alt = imagesData[0].split('&')[1];
+    // onLoad Image:
+    image.onload = () => {
+      imgContainer.replaceChildren(image);
+    };
+  });
+
+  // HTML element
+  const htmlContainer = document.querySelector('html') as HTMLHtmlElement;
+  // stopping propagation in modal-container children
+  document.querySelectorAll('.onclick-stop-propagation').forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  });
+
+  // the whole modal container
+  const productModal = document.querySelector(
+    '.modal-container'
+  ) as HTMLDivElement;
+  // elements with "onclick-close-modal" class close modal on click
+  document.querySelectorAll('.onclick-close-modal').forEach((item) => {
+    item.addEventListener('click', () => {
+      closeModal();
+      productModal.classList.add('scale-0');
+    });
+  });
+
+  // contains the plincipal (big) product image of modal
+  const productModalMainImage = document.querySelector(
+    '.modal-main-image-container'
+  ) as HTMLDivElement;
+
+  // Contains all the secondary (little) product images of modal
+  const modalSecondaryAbsContainer = document.querySelector(
+    '.modal-secondary-images-absolute-container'
+  ) as HTMLDivElement;
+
+  // recieve the string with all the product data
+  function openModal(dataValue: string) {
+    htmlContainer.style.overflow = 'hidden';
+
+    let imagesURLs = dataValue.split(' ');
+
+    const mainImage = new Image();
+
+    // first image is the main image
+    let mainImageData = imagesURLs[0];
+    if (!mainImageData) return;
+
+    mainImage.src = mainImageData.split('&')[0];
+    mainImage.alt = mainImageData.split('&')[1];
+
+    mainImage.onload = () => {
+      productModalMainImage.replaceChildren(mainImage);
+    };
+
+    imagesURLs.forEach(() => {
+      modalSecondaryAbsContainer.innerHTML = '';
+
+      const outerDiv = document.createElement('div');
+      outerDiv.className =
+        'modal-secondary-image-container relative rounded-md w-[50px] h-[50px] flex justify-center items-center';
+      const innerDiv = document.createElement('div');
+      outerDiv.className =
+        'pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse';
+
+      outerDiv.appendChild(innerDiv);
+      modalSecondaryAbsContainer.insertAdjacentElement('beforeend', outerDiv);
+    });
+
+    imagesURLs.forEach((imageData) => {
+      const secondaryImage = new Image();
+      const secondaryImageData = imageData;
+
+      if (!secondaryImageData) return;
+
+      secondaryImage.src = secondaryImageData.split('&')[0];
+      secondaryImage.alt = secondaryImageData.split('&')[1];
+
+      modalSecondaryAbsContainer.innerHTML = '';
+      secondaryImage.onload = () => {
+        const outerDiv = document.createElement('div');
+        outerDiv.className =
+          'modal-secondary-image-container relative rounded-md w-[50px] h-[50px] flex justify-center items-center';
+        outerDiv.appendChild(secondaryImage);
+
+        modalSecondaryAbsContainer.insertAdjacentElement('beforeend', outerDiv);
+      };
+    });
+  }
+
+  function closeModal() {
+    htmlContainer.style.overflow = 'auto';
+  }
+</script>

@@ -4,7 +4,7 @@ import ProductCategories from '@/components/Product_Categories';
 import { useState } from 'react';
 import ProductDetail from './Product_Detail';
 
-export interface IProps {
+interface IProps {
   products: IProduct[];
   categories: string[][];
 }

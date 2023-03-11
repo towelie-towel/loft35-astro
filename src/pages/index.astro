@@ -1,7 +1,7 @@
 ---
 import data from '@/utils/data';
 import Layout from '@/layout/Layout.astro';
-import ProductsSroll from '@/components/ProductScroll';
+import ProductsSroll from '@/containers/Product_Scroll.astro';
 import CardSlider from '@/containers/Card_Slider.astro';
 import '@/styles/global.css';
 
@@ -12,9 +12,5 @@ export interface Props {
 
 <Layout title="Home">
   <CardSlider images={data.slider} />
-  <ProductsSroll
-    client:load
-    products={data.products}
-    categories={data.categories}
-  />
+  <ProductsSroll products={data.products} categories={data.categories} />
 </Layout>

@@ -1,6 +1,5 @@
 ---
 import { NextSlider, PrevSlider } from '@/components/Icons';
-import Card from '../components/Card.astro';
 
 interface Images {
   name: string;
@@ -26,7 +25,20 @@ const { images } = Astro.props;
       id="h-scroll"
       class="relative flex w-full overflow-x-hidden duration-300"
     >
-      {images.map((image) => <Card src={image.src} name={image.name} />)}
+      {
+        images.map((image) => {
+          return (
+            <div class="flex-shrink-0 w-full">
+              <div
+                data-value={image.src}
+                class="relative w-[90%] shadow-md my-3 mx-auto rounded-md flex justify-center items-center onload-card-image-replace"
+              >
+                <div class="w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] pt-[32%] animate-pulse" />
+              </div>
+            </div>
+          );
+        })
+      }
     </div>
   </div>
   <button
@@ -46,17 +58,57 @@ const { images } = Astro.props;
   const prevCardSliderBtn = document.getElementById(
     'prev-card-btn'
   ) as HTMLButtonElement;
+  const imagesContainers = document.querySelectorAll(
+    '.onload-card-image-replace'
+  );
+
+  let imagesLoad: {
+    isAnimating: boolean;
+    imagesLoaded: string[];
+  } = {
+    isAnimating: false,
+    imagesLoaded: [],
+  };
 
   const cardsCount = cardSliderScroll.childElementCount - 1;
   let currentCard = 0;
+  let timeOutSet = false;
+
+  imagesContainers.forEach((imgContainer) => {
+    const image = new Image();
+
+    // asignando a la imágen el atributo "data-value" del imgContainer
+    image.src = imgContainer.getAttribute('data-value') || '/placeholder.png';
+
+    // al cargar la imágen:
+    image.onload = () => {
+      imgContainer.replaceChildren(image);
+      imagesLoad.imagesLoaded.push(image.src);
+
+      // si se cargaron las 4 imágenes se puede comenzar la animación
+      if (
+        imagesLoad.imagesLoaded.length === imagesContainers.length &&
+        !imagesLoad.isAnimating
+      ) {
+        imagesLoad.isAnimating = true;
+      }
+    };
+  });
 
   nextCardSliderBtn.addEventListener('click', scrollToNextCard);
   prevCardSliderBtn.addEventListener('click', scrollToPrevCard);
 
-  let timeOutSet = false;
-
   setInterval(() => {
-    if (!timeOutSet) {
+    // verifica si cargó la imágen actúal en pantalla y la siguiente ya cargaron:
+    let animateCurrent =
+      imagesLoad.imagesLoaded.includes(
+        imagesContainers[currentCard].getAttribute('data-value') || ''
+      ) &&
+      imagesLoad.imagesLoaded.includes(
+        imagesContainers[currentCard + 1].getAttribute('data-value') || ''
+      );
+
+    if (!timeOutSet && imagesLoad.isAnimating) {
       currentCard++;
       if (currentCard > cardsCount) {
         currentCard = 0;
