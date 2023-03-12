@@ -1,6 +1,4 @@
 ---
-import { NextSlider, PrevSlider } from "../components/Icons";
-
 interface Images {
   name: string;
   src: string;
@@ -16,10 +14,36 @@ const { images } = Astro.props;
 >
   <div class="relative overflow-hidden">
     <button class="absolute -left-2 bottom-[40%] z-10" id="prev-card-btn">
-      <PrevSlider stroke="#a1a5b7" />
+      <!--  <PrevSlider stroke="#a1a5b7" /> -->
+      <svg
+        width={32}
+        height={32}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke={"currentColor"}
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width={2.5}
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
     </button>
     <button class="absolute -right-2 bottom-[40%] z-10" id="next-card-btn">
-      <NextSlider stroke="#a1a5b7" />
+      <!-- <NextSlider stroke="#a1a5b7" /> -->
+      <svg
+        width={32}
+        height={32}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke={"currentColor"}
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width={2.5}
+          d="M9 5l7 7-7 7"></path>
+      </svg>
     </button>
     <div
       id="h-scroll"
