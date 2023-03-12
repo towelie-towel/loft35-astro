@@ -335,16 +335,11 @@ const { products, categories } = Astro.props;
 
           secondaryImages.forEach((element) => {
             // here unselect all images
-            element.style.border = '';
             element.style.width = '90%';
           });
           //here update selected image
           secondaryImage.style.transition = 'width 0.3s ease-in-out'; // set transition property
           secondaryImage.style.width = '100%'; // set new width
-          secondaryImage.style.border = 'solid 2px black';
-          console.log('secondaryImage-onclick', {
-            secondaryImages,
-          });
           // Scrolling secondary images to selected image
           modalSecondaryAbsContainer.style.transform = `translateX(${
             currentMainImage * -20
