@@ -131,12 +131,10 @@ const { products, categories } = Astro.props;
             d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
-      <div
-        class="secondary-images-scroll relative w-full h-auto p-5 overflow-visible rounded-md"
-      >
+      <div class="relative w-full h-auto p-5 overflow-visible rounded-md">
         {/* ProductLoader */}
         <div
-          class="modal-main-image-container flex w-full justify-center items-center"
+          class="modal-main-image-container shadow-xl flex w-full justify-center items-center"
         >
           <div
             class="pb-[100%] w-full bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse"
@@ -269,8 +267,7 @@ const { products, categories } = Astro.props;
     htmlContainer.style.overflow = 'hidden';
 
     const outerMainDiv = document.createElement('div');
-    outerMainDiv.className =
-      'modal-main-image-container relative flex w-full justify-center items-center';
+    outerMainDiv.className = 'relative flex w-full justify-center items-center';
     const innerMainDiv = document.createElement('div');
     innerMainDiv.className =
       'pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse';
@@ -308,11 +305,13 @@ const { products, categories } = Astro.props;
       // creating placeholder for secondary image to display
       const outerSecondaryDiv = document.createElement('div');
       outerSecondaryDiv.className =
-        'modal-secondary-image-container relative rounded-md w-[20%] h-[20%] flex justify-center items-center';
+        'modal-secondary-image-container shadow-md relative rounded-md w-[20%] h-[20%] flex justify-center items-center';
       const innerSecondaryDiv = document.createElement('div');
       innerSecondaryDiv.className =
         'pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse';
       outerSecondaryDiv.appendChild(innerSecondaryDiv);
+      // margin to secondary images for "shadow-md" can take effect
+      outerSecondaryDiv.style.margin = '4px';
 
       // injecting secondary image placeholder to secondary imgs container
       modalSecondaryAbsContainer.insertAdjacentElement(
