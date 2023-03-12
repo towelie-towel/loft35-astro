@@ -172,10 +172,6 @@ const data = {
           name: 'bianca',
           src: '/products/shirts/red/shirt-clothes-4.png',
         },
-        {
-          name: 'bianca',
-          src: '/products/shirts/red/shirt-clothes-5.png',
-        },
       ],
 
       price: '1500',

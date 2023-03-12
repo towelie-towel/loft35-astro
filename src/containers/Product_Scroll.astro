@@ -112,15 +112,15 @@ const { products, categories } = Astro.props;
     class="modal-container onclick-close-modal fixed inset-0 z-10 h-full w-full bg-[#bdbcbc7e] scale-0 transform transition-transform"
   >
     <div
-      class="onclick-stop-propagation absolute flex justify-center flex-col items-center w-[90%] h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--secondary-bg-color)] rounded-lg shadow-lg"
+      class="onclick-stop-propagation overflow-x-hidden absolute flex justify-center flex-col items-center w-[90%] h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--secondary-bg-color)] rounded-lg shadow-lg"
     >
       <button class="absolute z-50 top-0 right-0 onclick-close-modal">
         <svg
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
-          width={40}
-          height={40}
+          width={30}
+          height={30}
           stroke={'currentColor'}
         >
           <path
@@ -129,19 +129,21 @@ const { products, categories } = Astro.props;
             d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
-      <div class="relative p-5 overflow-visible">
+      <div
+        class="secondary-images-scroll relative w-full h-auto p-5 overflow-visible rounded-md"
+      >
         {/* ProductLoader */}
         <div
-          class="modal-main-image-container relative flex w-full justify-center items-center"
+          class="modal-main-image-container flex w-full justify-center items-center"
         >
           <div
-            class="pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse"
+            class="pb-[100%] w-full bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse"
           >
           </div>
         </div>
 
         <div
-          class="modal-secondary-images-absolute-container absolute flex-row w-auto bottom-[-10px] right-1/3 flex flex-wrap"
+          class="modal-secondary-images-absolute-container w-full absolute flex-row bottom-[-10px] left-[40%] flex flex-wrap"
         >
           <!-- <div
             class="modal-secondary-image-container relative rounded-md w-[50px] h-[50px] flex justify-center items-center"
@@ -257,6 +259,16 @@ const { products, categories } = Astro.props;
   function openModal(dataValue: string) {
     htmlContainer.style.overflow = 'hidden';
 
+    const outerDiv = document.createElement('div');
+    outerDiv.className =
+      'modal-main-image-container relative flex w-full justify-center items-center';
+    const innerDiv = document.createElement('div');
+    innerDiv.className =
+      'pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse';
+    outerDiv.appendChild(innerDiv);
+
+    productModalMainImage.replaceChildren(outerDiv);
+
     let imagesURLs = dataValue.split(' ');
 
     const mainImage = new Image();
@@ -267,26 +279,25 @@ const { products, categories } = Astro.props;
 
     mainImage.src = mainImageData.split('&')[0];
     mainImage.alt = mainImageData.split('&')[1];
+    mainImage.className = 'w-full';
 
     mainImage.onload = () => {
       productModalMainImage.replaceChildren(mainImage);
     };
 
-    imagesURLs.forEach(() => {
-      modalSecondaryAbsContainer.innerHTML = '';
-
-      const outerDiv = document.createElement('div');
-      outerDiv.className =
-        'modal-secondary-image-container relative rounded-md w-[50px] h-[50px] flex justify-center items-center';
-      const innerDiv = document.createElement('div');
-      outerDiv.className =
-        'pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse';
-
-      outerDiv.appendChild(innerDiv);
-      modalSecondaryAbsContainer.insertAdjacentElement('beforeend', outerDiv);
-    });
+    modalSecondaryAbsContainer.innerHTML = '';
 
     imagesURLs.forEach((imageData) => {
+      const outerDiv = document.createElement('div');
+      outerDiv.className =
+        'modal-secondary-image-container flex-shrink-0 relative rounded-md w-[20%] h-[20%] flex justify-center items-center';
+      const innerDiv = document.createElement('div');
+      innerDiv.className =
+        'pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse';
+      outerDiv.appendChild(innerDiv);
+
+      modalSecondaryAbsContainer.insertAdjacentElement('beforeend', outerDiv);
+
       const secondaryImage = new Image();
       const secondaryImageData = imageData;
 
@@ -295,14 +306,8 @@ const { products, categories } = Astro.props;
       secondaryImage.src = secondaryImageData.split('&')[0];
       secondaryImage.alt = secondaryImageData.split('&')[1];
 
-      modalSecondaryAbsContainer.innerHTML = '';
       secondaryImage.onload = () => {
-        const outerDiv = document.createElement('div');
-        outerDiv.className =
-          'modal-secondary-image-container relative rounded-md w-[50px] h-[50px] flex justify-center items-center';
-        outerDiv.appendChild(secondaryImage);
-
-        modalSecondaryAbsContainer.insertAdjacentElement('beforeend', outerDiv);
+        outerDiv.replaceChildren(secondaryImage);
       };
     });
   }
