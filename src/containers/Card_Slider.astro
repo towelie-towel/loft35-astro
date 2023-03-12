@@ -1,6 +1,4 @@
 ---
-import { NextSlider, PrevSlider } from '../components/Icons';
-
 interface Images {
   name: string;
   src: string;
@@ -16,10 +14,34 @@ const { images } = Astro.props;
 >
   <div class="relative overflow-hidden">
     <button class="absolute -left-2 bottom-[40%] z-10" id="prev-card-btn">
-      <PrevSlider stroke="#a1a5b7" />
+      <svg
+        width={32}
+        height={32}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke={"currentColor"}
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width={2.5}
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
     </button>
     <button class="absolute -right-2 bottom-[40%] z-10" id="next-card-btn">
-      <NextSlider stroke="#a1a5b7" />
+      <svg
+        width={32}
+        height={32}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke={"currentColor"}
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width={2.5}
+          d="M9 5l7 7-7 7"></path>
+      </svg>
     </button>
     <div
       id="h-scroll"
@@ -49,17 +71,17 @@ const { images } = Astro.props;
 </div>
 <script>
   const cardSliderScroll = document.getElementById(
-    'h-scroll'
+    "h-scroll"
   ) as HTMLDivElement;
 
   const nextCardSliderBtn = document.getElementById(
-    'next-card-btn'
+    "next-card-btn"
   ) as HTMLButtonElement;
   const prevCardSliderBtn = document.getElementById(
-    'prev-card-btn'
+    "prev-card-btn"
   ) as HTMLButtonElement;
   const imagesContainers = document.querySelectorAll(
-    '.onload-card-image-replace'
+    ".onload-card-image-replace"
   );
 
   let imagesLoad: {
@@ -78,7 +100,7 @@ const { images } = Astro.props;
     const image = new Image();
 
     // asignando a la imágen el atributo "data-value" del imgContainer
-    image.src = imgContainer.getAttribute('data-value') || '/placeholder.png';
+    image.src = imgContainer.getAttribute("data-value") || "/placeholder.png";
 
     // al cargar la imágen:
     image.onload = () => {
@@ -95,17 +117,17 @@ const { images } = Astro.props;
     };
   });
 
-  nextCardSliderBtn.addEventListener('click', scrollToNextCard);
-  prevCardSliderBtn.addEventListener('click', scrollToPrevCard);
+  nextCardSliderBtn.addEventListener("click", scrollToNextCard);
+  prevCardSliderBtn.addEventListener("click", scrollToPrevCard);
 
   setInterval(() => {
     // verifica si cargó la imágen actúal en pantalla y la siguiente ya cargaron:
     let animateCurrent =
       imagesLoad.imagesLoaded.includes(
-        imagesContainers[currentCard].getAttribute('data-value') || ''
+        imagesContainers[currentCard].getAttribute("data-value") || ""
       ) &&
       imagesLoad.imagesLoaded.includes(
-        imagesContainers[currentCard + 1].getAttribute('data-value') || ''
+        imagesContainers[currentCard + 1].getAttribute("data-value") || ""
       );
 
     if (!timeOutSet && imagesLoad.isAnimating) {
@@ -115,7 +137,7 @@ const { images } = Astro.props;
       }
       cardSliderScroll.scrollTo({
         left: cardSliderScroll.offsetWidth * currentCard,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   }, 10000);
@@ -134,7 +156,7 @@ const { images } = Astro.props;
     }
     cardSliderScroll.scrollTo({
       left: cardSliderScroll.offsetWidth * currentCard,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }
   function scrollToPrevCard() {
@@ -151,7 +173,7 @@ const { images } = Astro.props;
     }
     cardSliderScroll.scrollTo({
       left: cardSliderScroll.offsetWidth * currentCard,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }
 </script>

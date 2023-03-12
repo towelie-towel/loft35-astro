@@ -35,7 +35,7 @@
   -webkit-font-smoothing: antialiased;
 
   --bs-font-sans-serif: Poppins, Helvetica, sans-serif;
-  --bs-font-monospace: Monaco, Consolas, 'Liberation Mono', 'Courier New',
+  --bs-font-monospace: Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
   font-family: var(--bs-font-sans-serif);
   font-weight: 400;
@@ -46,7 +46,7 @@
   margin: 0 auto;
 }
 
-[data-color-scheme='dark'] {
+[data-color-scheme="dark"] {
   --primary-bg-color: var(--dark-bg-color);
   --secondary-bg-color: #444444;
 
