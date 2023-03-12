@@ -1,6 +1,6 @@
-import { IProduct } from '@/utils/data';
-import CategoryGroup from '@/components/CategoryGroup';
-import ProductCategories from '@/components/Product_Categories';
+import { IProduct } from '../utils/data';
+import CategoryGroup from '../components/CategoryGroup';
+import ProductCategories from '../components/Product_Categories';
 import { useState } from 'react';
 import ProductDetail from './Product_Detail';
 
