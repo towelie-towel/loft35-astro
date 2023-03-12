@@ -1,5 +1,5 @@
 ---
-import { NextSlider, PrevSlider } from '../components/Icons';
+import { NextSlider, PrevSlider } from "../components/Icons";
 
 interface Images {
   name: string;
@@ -49,17 +49,17 @@ const { images } = Astro.props;
 </div>
 <script>
   const cardSliderScroll = document.getElementById(
-    'h-scroll'
+    "h-scroll"
   ) as HTMLDivElement;
 
   const nextCardSliderBtn = document.getElementById(
-    'next-card-btn'
+    "next-card-btn"
   ) as HTMLButtonElement;
   const prevCardSliderBtn = document.getElementById(
-    'prev-card-btn'
+    "prev-card-btn"
   ) as HTMLButtonElement;
   const imagesContainers = document.querySelectorAll(
-    '.onload-card-image-replace'
+    ".onload-card-image-replace"
   );
 
   let imagesLoad: {
@@ -78,7 +78,7 @@ const { images } = Astro.props;
     const image = new Image();
 
     // asignando a la imágen el atributo "data-value" del imgContainer
-    image.src = imgContainer.getAttribute('data-value') || '/placeholder.png';
+    image.src = imgContainer.getAttribute("data-value") || "/placeholder.png";
 
     // al cargar la imágen:
     image.onload = () => {
@@ -95,17 +95,17 @@ const { images } = Astro.props;
     };
   });
 
-  nextCardSliderBtn.addEventListener('click', scrollToNextCard);
-  prevCardSliderBtn.addEventListener('click', scrollToPrevCard);
+  nextCardSliderBtn.addEventListener("click", scrollToNextCard);
+  prevCardSliderBtn.addEventListener("click", scrollToPrevCard);
 
   setInterval(() => {
     // verifica si cargó la imágen actúal en pantalla y la siguiente ya cargaron:
     let animateCurrent =
       imagesLoad.imagesLoaded.includes(
-        imagesContainers[currentCard].getAttribute('data-value') || ''
+        imagesContainers[currentCard].getAttribute("data-value") || ""
       ) &&
       imagesLoad.imagesLoaded.includes(
-        imagesContainers[currentCard + 1].getAttribute('data-value') || ''
+        imagesContainers[currentCard + 1].getAttribute("data-value") || ""
       );
 
     if (!timeOutSet && imagesLoad.isAnimating) {
@@ -115,7 +115,7 @@ const { images } = Astro.props;
       }
       cardSliderScroll.scrollTo({
         left: cardSliderScroll.offsetWidth * currentCard,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   }, 10000);
@@ -134,7 +134,7 @@ const { images } = Astro.props;
     }
     cardSliderScroll.scrollTo({
       left: cardSliderScroll.offsetWidth * currentCard,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }
   function scrollToPrevCard() {
@@ -151,7 +151,7 @@ const { images } = Astro.props;
     }
     cardSliderScroll.scrollTo({
       left: cardSliderScroll.offsetWidth * currentCard,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }
 </script>

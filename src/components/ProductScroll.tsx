@@ -1,8 +1,8 @@
-import { IProduct } from '../utils/data';
-import CategoryGroup from '../components/CategoryGroup';
-import ProductCategories from '../components/Product_Categories';
-import { useState } from 'react';
-import ProductDetail from './Product_Detail';
+import { IProduct } from "../utils/data";
+import CategoryGroup from "../components/CategoryGroup";
+import ProductCategories from "../components/Product_Categories";
+import { useState } from "react";
+import ProductDetail from "./Product_Detail";
 
 interface IProps {
   products: IProduct[];
@@ -17,14 +17,14 @@ const ProductScroll: React.FC<IProps> = ({ products, categories }) => {
   function openModal(product: IProduct) {
     setProductDetail(product);
 
-    const htmlElement = document.querySelector('html') as HTMLHtmlElement;
-    htmlElement.style.overflow = 'hidden';
+    const htmlElement = document.querySelector("html") as HTMLHtmlElement;
+    htmlElement.style.overflow = "hidden";
   }
 
   function closeModal() {
     setProductDetail(null);
-    const htmlElement = document.querySelector('html') as HTMLHtmlElement;
-    htmlElement.style.overflow = 'auto';
+    const htmlElement = document.querySelector("html") as HTMLHtmlElement;
+    htmlElement.style.overflow = "auto";
   }
 
   return (

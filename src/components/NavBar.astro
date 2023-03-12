@@ -1,6 +1,6 @@
 ---
-import FindProducts from './FindProducts';
-import { InstagramIcon, ShoppingCart, StarIcon } from './Icons';
+import FindProducts from "./FindProducts";
+import { InstagramIcon, ShoppingCart, StarIcon } from "./Icons";
 
 export interface IProps {}
 const {} = Astro.props;
@@ -15,26 +15,26 @@ const {} = Astro.props;
       id="toggleThemeBtn"
       class="flex w-1/3 justify-around max-md:justify-between"
     >
-      <StarIcon stroke={'var(--ico-primary-color)'} height={15} />
+      <StarIcon stroke={"var(--ico-primary-color)"} height={15} />
       <InstagramIcon stroke="var(--ico-primary-color)" height={15} />
       <ShoppingCart stroke="var(--ico-primary-color)" height={15} />
     </div>
   </div>
 </nav>
 <script>
-  const htmlElement = document.querySelector('html');
-  htmlElement?.setAttribute('data-color-scheme', 'light');
+  const htmlElement = document.querySelector("html");
+  htmlElement?.setAttribute("data-color-scheme", "light");
   const toggleThemeBtn = document.querySelector(
-    '#toggleThemeBtn'
+    "#toggleThemeBtn"
   ) as HTMLDivElement;
-  toggleThemeBtn.addEventListener('click', toggleTheme);
+  toggleThemeBtn.addEventListener("click", toggleTheme);
 
   function toggleTheme() {
-    const htmlElement = document.querySelector('html') as HTMLHtmlElement;
-    if (htmlElement.getAttribute('data-color-scheme') === 'dark') {
-      htmlElement.setAttribute('data-color-scheme', 'light');
+    const htmlElement = document.querySelector("html") as HTMLHtmlElement;
+    if (htmlElement.getAttribute("data-color-scheme") === "dark") {
+      htmlElement.setAttribute("data-color-scheme", "light");
     } else {
-      htmlElement.setAttribute('data-color-scheme', 'dark');
+      htmlElement.setAttribute("data-color-scheme", "dark");
     }
   }
 </script>

@@ -1,6 +1,6 @@
-import type { IProduct } from '../utils/data';
-import ProductDescription from './Product_Description';
-import ProductLoader from './Product_Loader';
+import type { IProduct } from "../utils/data";
+import ProductDescription from "./Product_Description";
+import ProductLoader from "./Product_Loader";
 
 interface IProps {
   product: IProduct;

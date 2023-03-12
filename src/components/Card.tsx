@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface IProps {
   src: string;
@@ -20,7 +20,7 @@ const Card: React.FC<IProps> = ({ src, alt }) => {
     <div className="flex-shrink-0 w-full">
       <div
         className={`relative w-[90%] shadow-md my-3 mx-auto rounded-md flex justify-center items-center ${
-          isLoading && 'pb-[32%]'
+          isLoading && "pb-[32%]"
         }`}
       >
         {isLoading ? (

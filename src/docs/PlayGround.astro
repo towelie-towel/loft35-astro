@@ -1,10 +1,10 @@
 ---
-import Layout from '../layout/Layout.astro';
-import Header from './Component.astro';
-const Element = 'div';
+import Layout from "../layout/Layout.astro";
+import Header from "./Component.astro";
+const Element = "div";
 const Component = Header;
-const htmlString = '<p>Raw HTML content</p>';
-const items = ['Dog', 'Cat', 'Platypus'];
+const htmlString = "<p>Raw HTML content</p>";
+const items = ["Dog", "Cat", "Platypus"];
 const { generator } = Astro.props;
 ---
 
@@ -36,7 +36,7 @@ const { generator } = Astro.props;
 <script>
   let numericId; // numericId is undefined
   let id: string | number = 123; // default value is 123
-  if (typeof numericId !== 'undefined') {
+  if (typeof numericId !== "undefined") {
     id = numericId;
   }
   console.log(id); // this logs 123

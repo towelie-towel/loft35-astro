@@ -17,7 +17,7 @@ const ProductCategories: React.FC<IProps> = ({ categories }) => {
               className="opacity-[var(--dark-reduced-opacitity-1)] active:bg-[var(--light-gray) mr-2 inline-block overflow-hidden rounded-md bg-[var(--transparent-gray-1)] py-1 px-[2%] text-start font-semibold text-[var(--font-secondary-color)] hover:bg-[var(--light-gray)]"
               key={category.join()}
             >
-              {category.join(' & ')}
+              {category.join(" & ")}
             </button>
           );
         })}

@@ -1,7 +1,7 @@
-import type { IProduct } from '../utils/data';
-import React, { useEffect, useState } from 'react';
-import ProductDescription from './Product_Description';
-import ProductLoader from './Product_Loader';
+import type { IProduct } from "../utils/data";
+import React, { useEffect, useState } from "react";
+import ProductDescription from "./Product_Description";
+import ProductLoader from "./Product_Loader";
 
 interface IProps {
   product?: IProduct | null;
@@ -18,7 +18,7 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
   return (
     <div
       className={`fixed inset-0 z-10 h-full w-full bg-[#bdbcbc7e] ${
-        product ? 'scale-100' : 'scale-0'
+        product ? "scale-100" : "scale-0"
       } transform  transition-transform`}
       onClick={(e) => {
         e.preventDefault();
@@ -53,8 +53,8 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
                 style={{
                   border:
                     !displayedImg || displayedImg === product.image.src
-                      ? 'black solid 1px'
-                      : 'white solid 1px',
+                      ? "black solid 1px"
+                      : "white solid 1px",
                 }}
                 onClick={() => {
                   setDisplayedImg(product.image.src);
@@ -76,8 +76,8 @@ const ProductDetail: React.FC<IProps> = ({ product, closeProductDetail }) => {
                     style={{
                       border:
                         displayedImg === image.src
-                          ? 'black solid 1px'
-                          : 'white solid 1px',
+                          ? "black solid 1px"
+                          : "white solid 1px",
                     }}
                   >
                     <ProductLoader src={image.src} alt={image.name} />

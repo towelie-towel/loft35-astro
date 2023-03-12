@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { MagnifyingGlass } from './Icons';
+import React, { useState } from "react";
+import { MagnifyingGlass } from "./Icons";
 
 const FindProducts = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>

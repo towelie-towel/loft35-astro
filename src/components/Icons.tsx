@@ -16,7 +16,7 @@ export const MagnifyingGlass: React.FC<IProps> = ({
       height={height || width || 40}
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke={stroke || 'currentColor'}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -34,7 +34,7 @@ export const PrevSlider: React.FC<IProps> = ({ width, height, stroke }) => {
       height={height || width || 32}
       fill="none"
       viewBox="0 0 24 24"
-      stroke={stroke || 'currentColor'}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -53,7 +53,7 @@ export const NextSlider: React.FC<IProps> = ({ width, height, stroke }) => {
       height={height || width || 32}
       fill="none"
       viewBox="0 0 24 24"
-      stroke={stroke || 'currentColor'}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -73,7 +73,7 @@ export const ShoppingCart: React.FC<IProps> = ({ width, height, stroke }) => {
       strokeWidth="1.5"
       width={width || height || 40}
       height={height || width || 40}
-      stroke={stroke || 'currentColor'}
+      stroke={stroke || "currentColor"}
     >
       <path
         strokeLinecap="round"
@@ -97,7 +97,7 @@ export const StarIcon: React.FC<IProps & { onClick?: () => void }> = ({
       strokeWidth="1.5"
       width={width || height || 40}
       height={height || width || 40}
-      stroke={stroke || 'currentColor'}
+      stroke={stroke || "currentColor"}
       onClick={onClick}
     >
       <path
@@ -112,7 +112,7 @@ export const StarIcon: React.FC<IProps & { onClick?: () => void }> = ({
 export const InstagramIcon: React.FC<IProps> = ({ width, height, stroke }) => {
   return (
     <svg
-      stroke={stroke || 'currentColor'}
+      stroke={stroke || "currentColor"}
       width={width || height || 40}
       height={height || width || 40}
       viewBox="0 0 24 24"
@@ -147,7 +147,7 @@ export const AddToCartIcon: React.FC<IProps> = ({ width, height, stroke }) => {
       height={height || width || 40}
       viewBox="0 0 24 24"
       strokeWidth="1"
-      stroke={stroke || 'currentColor'}
+      stroke={stroke || "currentColor"}
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface IProps {
   alt: string;
@@ -21,7 +21,7 @@ const ProductLoader: React.FC<IProps> = ({ alt, src }) => {
       {isLoading ? (
         <div
           className={` ${
-            isLoading && 'pb-[100%]'
+            isLoading && "pb-[100%]"
           } w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse`}
         ></div>
       ) : (
