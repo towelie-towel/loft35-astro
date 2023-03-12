@@ -1,5 +1,5 @@
 ---
-import type { IProduct } from '@/utils/data';
+import type { IProduct } from '../utils/data';
 
 export interface Props {
   products: IProduct[];
@@ -143,7 +143,7 @@ const { products, categories } = Astro.props;
         </div>
 
         <div
-          class="modal-secondary-images-absolute-container w-full absolute flex-row bottom-[-10px] left-[40%] flex flex-wrap"
+          class="modal-secondary-images-absolute-container transition-all w-full absolute flex-row bottom-[-10px] left-[40%] flex flex-wrap"
         >
           <!-- <div
             class="modal-secondary-image-container relative rounded-md w-[50px] h-[50px] flex justify-center items-center"
@@ -259,17 +259,18 @@ const { products, categories } = Astro.props;
   function openModal(dataValue: string) {
     htmlContainer.style.overflow = 'hidden';
 
-    const outerDiv = document.createElement('div');
-    outerDiv.className =
+    const outerMainDiv = document.createElement('div');
+    outerMainDiv.className =
       'modal-main-image-container relative flex w-full justify-center items-center';
-    const innerDiv = document.createElement('div');
-    innerDiv.className =
+    const innerMainDiv = document.createElement('div');
+    innerMainDiv.className =
       'pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse';
-    outerDiv.appendChild(innerDiv);
+    outerMainDiv.appendChild(innerMainDiv);
 
-    productModalMainImage.replaceChildren(outerDiv);
+    productModalMainImage.replaceChildren(outerMainDiv);
 
     let imagesURLs = dataValue.split(' ');
+    imagesURLs = imagesURLs.filter((item) => item !== '');
 
     const mainImage = new Image();
 
@@ -277,42 +278,95 @@ const { products, categories } = Astro.props;
     let mainImageData = imagesURLs[0];
     if (!mainImageData) return;
 
+    // Getting image data
     mainImage.src = mainImageData.split('&')[0];
     mainImage.alt = mainImageData.split('&')[1];
     mainImage.className = 'w-full';
 
+    // onLoad replace
     mainImage.onload = () => {
-      productModalMainImage.replaceChildren(mainImage);
+      outerMainDiv.replaceChildren(mainImage);
     };
 
+    // wipping previous product modal secondary imgs
     modalSecondaryAbsContainer.innerHTML = '';
 
+    let secondaryImages: HTMLImageElement[] = [];
+    let currentMainImage: number = 0;
+
     imagesURLs.forEach((imageData) => {
-      const outerDiv = document.createElement('div');
-      outerDiv.className =
-        'modal-secondary-image-container flex-shrink-0 relative rounded-md w-[20%] h-[20%] flex justify-center items-center';
-      const innerDiv = document.createElement('div');
-      innerDiv.className =
+      // creating placeholder for secondary image to display
+      const outerSecondaryDiv = document.createElement('div');
+      outerSecondaryDiv.className =
+        'modal-secondary-image-container relative rounded-md w-[20%] h-[20%] flex justify-center items-center';
+      const innerSecondaryDiv = document.createElement('div');
+      innerSecondaryDiv.className =
         'pb-[100%] w-full inset-0 bg-gradient-to-br from-[var(--secondary-bg-color)] to-[var(--primary-bg-color)] animate-pulse';
-      outerDiv.appendChild(innerDiv);
+      outerSecondaryDiv.appendChild(innerSecondaryDiv);
 
-      modalSecondaryAbsContainer.insertAdjacentElement('beforeend', outerDiv);
+      // injecting secondary image placeholder to secondary imgs container
+      modalSecondaryAbsContainer.insertAdjacentElement(
+        'beforeend',
+        outerSecondaryDiv
+      );
 
+      // creting secondary image
       const secondaryImage = new Image();
       const secondaryImageData = imageData;
 
       if (!secondaryImageData) return;
 
+      // getting image data
       secondaryImage.src = secondaryImageData.split('&')[0];
       secondaryImage.alt = secondaryImageData.split('&')[1];
 
       secondaryImage.onload = () => {
-        outerDiv.replaceChildren(secondaryImage);
+        // upgrading secondary images arraylist
+        secondaryImages.push(secondaryImage);
+
+        // replacing each image placeholder with image
+        outerSecondaryDiv.replaceChildren(secondaryImage);
+
+        secondaryImage.addEventListener('click', () => {
+          // getting image index
+          const currentMainImage = secondaryImages.findIndex(
+            (item) => item === secondaryImage
+          );
+
+          secondaryImages.forEach((element) => {
+            // here unselect all images
+            element.style.border = '';
+            element.style.width = '90%';
+          });
+          //here update selected image
+          secondaryImage.style.transition = 'width 0.3s ease-in-out'; // set transition property
+          secondaryImage.style.width = '100%'; // set new width
+          secondaryImage.style.border = 'solid 2px black';
+          console.log('secondaryImage-onclick', {
+            secondaryImages,
+          });
+          // Scrolling secondary images to selected image
+          modalSecondaryAbsContainer.style.transform = `translateX(${
+            currentMainImage * -20
+          }%)`;
+
+          // creating new main image from selected secondary image
+          const newMainImage = new Image();
+          newMainImage.src = secondaryImage.src;
+          newMainImage.alt = secondaryImage.alt;
+          newMainImage.className = 'w-full';
+
+          //replacing mainImage for selected secondary image
+          outerMainDiv.replaceChildren(newMainImage);
+        });
       };
     });
   }
 
   function closeModal() {
     htmlContainer.style.overflow = 'auto';
+    productModalMainImage.innerHTML = '';
+    modalSecondaryAbsContainer.innerHTML = '';
+    modalSecondaryAbsContainer.style.removeProperty('transform');
   }
 </script>
