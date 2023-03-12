@@ -58,7 +58,9 @@ const { products, categories } = Astro.props;
                       data-value={
                         product.image.src +
                         '&' +
-                        product.image.name +
+                        product.slug +
+                        '&' +
+                        product.price +
                         ' ' +
                         product.secondaryImages
                           .map((image) => image.src + '&' + image.name)
@@ -164,7 +166,9 @@ const { products, categories } = Astro.props;
           <h2 class="text-md opacity-[var(--dark-reduced-opacitity-1)]">
             {''}
           </h2>
-          <h3 class="opacity-[var(--dark-reduced-opacitity-1)] text-md my-4">
+          <h3
+            class="modal-product-price opacity-[var(--dark-reduced-opacitity-1)] text-md my-4"
+          >
             CUP$ {''}
           </h3>
           <button
@@ -196,17 +200,18 @@ const { products, categories } = Astro.props;
 </div>
 <script>
   /*   ProductScroll Images containers (div) */
-  const productImageContainers = document.querySelectorAll(
+  const productImageArray = document.querySelectorAll(
     '.product-image-container'
   );
   // adding event listener only to product items to open modal
-  productImageContainers.forEach((item) => {
+  productImageArray.forEach((item) => {
     item.addEventListener('click', (e) => {
       openModal(item.getAttribute('data-value') || '');
       productModal.classList.remove('scale-0');
     });
   });
-  productImageContainers.forEach((imgContainer) => {
+  // Injecting product images
+  productImageArray.forEach((imgContainer) => {
     const image = new Image();
     // Getting the data-value from the product image container
     let imgContainerData = imgContainer.getAttribute('data-value');
@@ -255,6 +260,10 @@ const { products, categories } = Astro.props;
     '.modal-secondary-images-absolute-container'
   ) as HTMLDivElement;
 
+  const modalProductPrice = document.querySelector(
+    '.modal-product-price'
+  ) as HTMLHeadingElement;
+
   // recieve the string with all the product data
   function openModal(dataValue: string) {
     htmlContainer.style.overflow = 'hidden';
@@ -281,6 +290,7 @@ const { products, categories } = Astro.props;
     // Getting image data
     mainImage.src = mainImageData.split('&')[0];
     mainImage.alt = mainImageData.split('&')[1];
+    modalProductPrice.innerText = 'CUP$ ' + mainImageData.split('&')[2];
     mainImage.className = 'w-full';
 
     // onLoad replace
