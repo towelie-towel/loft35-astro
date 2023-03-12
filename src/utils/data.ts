@@ -78,11 +78,11 @@ const data = {
       secondaryImages: [
         {
           name: 'bianca',
-          src: '//products/shirts/celeste/shirt-clothes-2.png',
+          src: '/products/shirts/celeste/shirt-clothes-2.png',
         },
         {
           name: 'bianca',
-          src: '//products/shirts/celeste/shirt-clothes-3.png',
+          src: '/products/shirts/celeste/shirt-clothes-3.png',
         },
       ],
       price: '1500',
@@ -114,10 +114,6 @@ const data = {
         {
           name: 'bianca',
           src: '/products/shirts/green/shirt-clothes-4.png',
-        },
-        {
-          name: 'bianca',
-          src: '/products/shirts/green/shirt-clothes-5.png',
         },
       ],
       price: '1500',
