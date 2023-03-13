@@ -329,10 +329,10 @@ const { products, categories } = Astro.props;
       secondaryImage.src = secondaryImageData.split("&")[0];
       secondaryImage.alt = secondaryImageData.split("&")[1];
 
-      secondaryImage.onload = () => {
-        // upgrading secondary images arraylist
-        secondaryImages.push(secondaryImage);
+      // upgrading secondary images arraylist
+      secondaryImages.push(secondaryImage);
 
+      secondaryImage.onload = () => {
         // replacing each image placeholder with image
         outerSecondaryDiv.replaceChildren(secondaryImage);
 
