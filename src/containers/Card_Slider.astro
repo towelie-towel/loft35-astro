@@ -179,7 +179,7 @@ const { images } = Astro.props;
       ) &&
       imagesLoad.imagesLoaded.find((item) =>
         item.includes(
-          imagesContainers[currentCard + 1].getAttribute("data-value") || ""
+          imagesContainers[currentCard + 1]?.getAttribute("data-value") || ""
         )
       );
 
