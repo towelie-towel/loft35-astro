@@ -21,6 +21,7 @@ const { products, categories } = Astro.props;
     </div>
     <div
       class="mx-auto w-[90%] items-center overflow-x-scroll whitespace-nowrap px-0 pb-3"
+      id="products-categories-row"
     >
       {
         categories.map((category) => {
@@ -374,3 +375,15 @@ const { products, categories } = Astro.props;
     modalSecondaryAbsContainer.style.removeProperty("transform");
   }
 </script>
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  #products-categories-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  #products-categories-row {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+</style>
