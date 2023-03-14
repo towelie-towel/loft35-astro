@@ -153,24 +153,28 @@ const { images } = Astro.props;
   cardSliderScroll.addEventListener("touchend", (e) => {
     const endSliderX = e.changedTouches[0].clientX;
 
-    if (endSliderX > currentMinSliderX && endSliderX < currentMaxSliderX) {
-      console.log("c");
+    // if (endSliderX > currentMinSliderX && endSliderX < currentMaxSliderX) {
+    //   cardSliderScroll.scrollTo({
+    //     left: cardSliderScroll.offsetWidth * currentCard,
+    //     behavior: "smooth",
+    //   });
+    //   return;
+    // }
+
+    if (endSliderX > currentMinSliderX && endSliderX > startSliderX) {
+      if (currentCard === 0) return;
+      scrollToPrevCard();
+    } else if (endSliderX < currentMaxSliderX && endSliderX < startSliderX) {
+      if (currentCard === cardsCount) return;
+      scrollToNextCard();
+    }
+
+    setTimeout(() => {
       cardSliderScroll.scrollTo({
         left: cardSliderScroll.offsetWidth * currentCard,
         behavior: "smooth",
       });
-      return;
-    }
-
-    if (endSliderX > currentMinSliderX && endSliderX > startSliderX) {
-      console.log("a");
-      if (currentCard === 0) return;
-      scrollToPrevCard();
-    } else if (endSliderX < currentMaxSliderX && endSliderX < startSliderX) {
-      console.log("b");
-      if (currentCard === cardsCount) return;
-      scrollToNextCard();
-    }
+    }, 800);
   });
 
   nextCardSliderBtn.addEventListener("click", scrollToNextCard);
