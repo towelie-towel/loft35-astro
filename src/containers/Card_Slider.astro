@@ -132,7 +132,7 @@ const { images } = Astro.props;
         imagesContainers[currentCard + 1].getAttribute("data-value") || ""
       );
 
-    if (!timeOutSet && imagesLoad.isAnimating) {
+    if (!timeOutSet && imagesLoad.isAnimating && animateCurrent) {
       currentCard++;
       if (currentCard > cardsCount) {
         currentCard = 0;
