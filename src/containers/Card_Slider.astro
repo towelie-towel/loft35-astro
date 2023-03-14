@@ -172,11 +172,15 @@ const { images } = Astro.props;
   setInterval(() => {
     // verifica si cargó la imágen actúal en pantalla y la siguiente ya cargaron:
     let animateCurrent =
-      imagesLoad.imagesLoaded.includes(
-        imagesContainers[currentCard].getAttribute("data-value") || ""
+      imagesLoad.imagesLoaded.find((item) =>
+        item.includes(
+          imagesContainers[currentCard].getAttribute("data-value") || ""
+        )
       ) &&
-      imagesLoad.imagesLoaded.includes(
-        imagesContainers[currentCard + 1].getAttribute("data-value") || ""
+      imagesLoad.imagesLoaded.find((item) =>
+        item.includes(
+          imagesContainers[currentCard + 1].getAttribute("data-value") || ""
+        )
       );
 
     if (!timeOutSet && imagesLoad.isAnimating && animateCurrent) {
