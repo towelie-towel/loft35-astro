@@ -37,24 +37,24 @@ const data = {
   ],
   products: [
     {
-      name: "Red Shirt",
-      slug: "red-shirt",
+      name: "Blue Shirts",
+      slug: "blue-shirt",
       category: "Shirts",
       image: {
-        name: "bianca",
+        name: "shirt-clothes-1",
         src: "/products/shirts/blue/shirt-clothes-1.png",
       },
       secondaryImages: [
         {
-          name: "bianca",
+          name: "shirt-clothes-2",
           src: "/products/shirts/blue/shirt-clothes-2.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-3",
           src: "/products/shirts/blue/shirt-clothes-3.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-4",
           src: "/products/shirts/blue/shirt-clothes-4.png",
         },
       ],
@@ -68,21 +68,29 @@ const data = {
       isFeatured: true,
     },
     {
-      name: "Beige Blouse",
-      slug: "beige-blouse",
+      name: "Celeste Blouse",
+      slug: "celeste-blouse",
       category: "Blouses",
       image: {
-        name: "bianca_1",
+        name: "shirt-clothes-1",
         src: "/products/shirts/celeste/shirt-clothes-1.png",
       },
       secondaryImages: [
         {
-          name: "bianca",
+          name: "shirt-clothes-2",
           src: "/products/shirts/celeste/shirt-clothes-2.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-3",
           src: "/products/shirts/celeste/shirt-clothes-3.png",
+        },
+        {
+          name: "shirt-clothes-4",
+          src: "/products/shirts/celeste/shirt-clothes-4.png",
+        },
+        {
+          name: "shirt-clothes-5",
+          src: "/products/shirts/celeste/shirt-clothes-5.png",
         },
       ],
       price: "1500",
@@ -95,24 +103,24 @@ const data = {
       isFeatured: true,
     },
     {
-      name: "Black T-Shirt",
-      slug: "black-tshirt",
+      name: "Green T-Shirt",
+      slug: "green-tshirt",
       category: "T-Shirts",
       image: {
-        name: "mart",
+        name: "shirt-clothes-1",
         src: "/products/shirts/green/shirt-clothes-1.png",
       },
       secondaryImages: [
         {
-          name: "mart_1",
+          name: "shirt-clothes-2",
           src: "/products/shirts/green/shirt-clothes-2.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-3",
           src: "/products/shirts/green/shirt-clothes-3.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-4",
           src: "/products/shirts/green/shirt-clothes-4.png",
         },
       ],
@@ -130,12 +138,12 @@ const data = {
       slug: "Pink-long-tshirt",
       category: "T-Shirts",
       image: {
-        name: "mart-production",
+        name: "shirt-clothes-1",
         src: "/products/shirts/pink/shirt-clothes-1.png",
       },
       secondaryImages: [
         {
-          name: "mart-production_1",
+          name: "shirt-clothes-2",
           src: "/products/shirts/pink/shirt-clothes-2.png",
         },
       ],
@@ -148,24 +156,24 @@ const data = {
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.",
     },
     {
-      name: "White T-Shirt",
-      slug: "white-tshirt",
+      name: "Red T-Shirt",
+      slug: "red-tshirt",
       category: "T-Shirts",
       image: {
-        name: "mockupbee",
+        name: "shirt-clothes-1",
         src: "/products/shirts/red/shirt-clothes-1.png",
       },
       secondaryImages: [
         {
-          name: "bianca",
+          name: "shirt-clothes-2",
           src: "/products/shirts/red/shirt-clothes-2.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-3",
           src: "/products/shirts/red/shirt-clothes-3.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-4",
           src: "/products/shirts/red/shirt-clothes-4.png",
         },
       ],
@@ -179,24 +187,24 @@ const data = {
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, quo amet, aut maiores vitae necessitatibus praesentium facere voluptatibus animi voluptas earum exercitationem a, commodi temporibus excepturi soluta dignissimos omnis laudantium.",
     },
     {
-      name: "Denim Dark Pants",
-      slug: "denim-dark-pants",
+      name: "Yellow Dark Pants",
+      slug: "yellow-dark-pants",
       category: "Pants",
       image: {
-        name: "cotton-studio",
+        name: "shirt-clothes-1",
         src: "/products/shirts/yellow/shirt-clothes-1.png",
       },
       secondaryImages: [
         {
-          name: "bianca",
+          name: "shirt-clothes-2",
           src: "/products/shirts/yellow/shirt-clothes-2.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-3",
           src: "/products/shirts/yellow/shirt-clothes-3.png",
         },
         {
-          name: "bianca",
+          name: "shirt-clothes-4",
           src: "/products/shirts/yellow/shirt-clothes-4.png",
         },
       ],
@@ -218,11 +226,11 @@ const data = {
       },
       secondaryImages: [
         {
-          name: "bianca",
+          name: "placeholder",
           src: "/placeholder.png",
         },
         {
-          name: "bianca",
+          name: "placeholder",
           src: "/placeholder.png",
         },
       ],
@@ -239,12 +247,12 @@ const data = {
       slug: "black-coat",
       category: "Coats",
       image: {
-        name: "evg-kowalievska",
+        name: "placeholder",
         src: "/placeholder.png",
       },
       secondaryImages: [
         {
-          name: "evg-kowalievska_1",
+          name: "placeholder",
           src: "/placeholder.png",
         },
       ],
@@ -261,7 +269,7 @@ const data = {
       slug: "white-bag",
       category: "Bags",
       image: {
-        name: "fatin-hisham",
+        name: "placeholder",
         src: "/placeholder.png",
       },
       secondaryImages: [],
@@ -278,7 +286,7 @@ const data = {
       slug: "denim-light-pants",
       category: "Pants",
       image: {
-        name: "pixabay",
+        name: "placeholder",
         src: "/placeholder.png",
       },
       secondaryImages: [],
