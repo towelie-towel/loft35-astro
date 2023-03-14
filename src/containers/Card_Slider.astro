@@ -47,7 +47,7 @@ const { images } = Astro.props;
     </button>
     <div
       id="h-scroll"
-      class="relative flex w-full overflow-x-hidden duration-300"
+      class="relative overflow-x-scroll flex w-full duration-300"
     >
       {
         images.map((image) => {
@@ -117,6 +117,60 @@ const { images } = Astro.props;
         imagesLoad.isAnimating = true;
       }
     };
+  });
+
+  let startSliderX: number;
+  let currentMaxSliderX: number;
+  let currentMinSliderX: number;
+
+  cardSliderScroll.addEventListener(
+    "touchstart",
+    (e) => {
+      startSliderX = e.touches[0].clientX;
+      currentMaxSliderX = startSliderX * 1.2;
+      currentMinSliderX = startSliderX * 0.8;
+    },
+    {
+      passive: true,
+    }
+  );
+
+  cardSliderScroll.addEventListener(
+    "touchmove",
+    (e) => {
+      if (currentMaxSliderX < e.touches[0].clientX) {
+        currentMaxSliderX = e.touches[0].clientX;
+      }
+      if (currentMinSliderX > e.touches[0].clientX) {
+        currentMinSliderX = e.touches[0].clientX;
+      }
+    },
+    {
+      passive: true,
+    }
+  );
+
+  cardSliderScroll.addEventListener("touchend", (e) => {
+    const endSliderX = e.changedTouches[0].clientX;
+
+    if (endSliderX > currentMinSliderX && endSliderX < currentMaxSliderX) {
+      console.log("c");
+      cardSliderScroll.scrollTo({
+        left: cardSliderScroll.offsetWidth * currentCard,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    if (endSliderX > currentMinSliderX && endSliderX > startSliderX) {
+      console.log("a");
+      if (currentCard === 0) return;
+      scrollToPrevCard();
+    } else if (endSliderX < currentMaxSliderX && endSliderX < startSliderX) {
+      console.log("b");
+      if (currentCard === cardsCount) return;
+      scrollToNextCard();
+    }
   });
 
   nextCardSliderBtn.addEventListener("click", scrollToNextCard);
