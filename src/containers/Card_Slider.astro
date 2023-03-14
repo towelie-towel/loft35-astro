@@ -124,15 +124,6 @@ const { images } = Astro.props;
   let currentMinSliderX: number;
 
   cardSliderScroll.addEventListener(
-    "scroll",
-    function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    },
-    { passive: false, once: true, capture: true }
-  );
-
-  cardSliderScroll.addEventListener(
     "touchstart",
     (e) => {
       startSliderX = e.touches[0].clientX;
@@ -162,10 +153,14 @@ const { images } = Astro.props;
   cardSliderScroll.addEventListener("touchend", (e) => {
     const endSliderX = e.changedTouches[0].clientX;
 
-    if (endSliderX > currentMinSliderX && endSliderX > startSliderX) {
+    if (endSliderX > currentMinSliderX && endSliderX < currentMaxSliderX) {
+      return;
+    }
+
+    if (endSliderX > startSliderX) {
       if (currentCard === 0) return;
       scrollToPrevCard();
-    } else if (endSliderX < currentMaxSliderX && endSliderX < startSliderX) {
+    } else if (endSliderX < startSliderX) {
       if (currentCard === cardsCount) return;
       scrollToNextCard();
     }
