@@ -115,7 +115,7 @@ const { products, categories } = Astro.props;
     class="modal-container onclick-close-modal fixed inset-0 z-10 h-full w-full bg-[#bdbcbc7e] scale-0 transform transition-transform"
   >
     <div
-      class="onclick-stop-propagation overflow-x-hidden absolute flex justify-center flex-col items-center w-[90%] h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--secondary-bg-color)] rounded-lg shadow-lg"
+      class="onclick-stop-propagation overflow-x-hidden absolute flex justify-center flex-col items-center w-[90%] max-w-xs h-auto top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--secondary-bg-color)] rounded-lg shadow-lg"
     >
       <button class="absolute z-50 top-0 right-0 onclick-close-modal">
         <svg
@@ -132,7 +132,9 @@ const { products, categories } = Astro.props;
             d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
-      <div class="relative w-full h-auto p-5 overflow-visible rounded-md">
+      <div
+        class="relative w-full h-auto p-5 max-h-80 max-w-[320px] overflow-visible rounded-md"
+      >
         {/* ProductLoader */}
         <div
           class="modal-main-image-container shadow-xl flex w-full justify-center items-center"
